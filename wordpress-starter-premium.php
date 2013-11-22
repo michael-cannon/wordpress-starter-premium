@@ -37,7 +37,7 @@ class WordPress_Starter_Premium extends Aihrus_Common {
 	const FREE_PLUGIN_BASE = 'wordpress-starter/wordpress-starter.php';
 	const FREE_VERSION     = '0.0.1';
 	const ID               = 'wordpress-starter-premium';
-	const ITEM_NAME        = 'WordPress Starter';
+	const ITEM_NAME        = 'WordPress Starter Premium';
 	const PLUGIN_BASE      = 'wordpress-starter-premium/wordpress-starter-premium.php';
 	const SLUG             = 'wpsp_';
 	const VERSION          = '0.0.1';
@@ -52,54 +52,44 @@ class WordPress_Starter_Premium extends Aihrus_Common {
 
 	public function __construct() {
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
-		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
 		add_action( 'init', array( $this, 'init' ) );
 		add_shortcode( 'wordpress_starter_premium_shortcode', array( $this, 'wordpress_starter_premium_shortcode' ) );
+
+		if ( self::do_load() ) {
+			add_action( 'admin_menu', array( $this, 'admin_menu' ) );
+			self::load_options();
+		}
 	}
 
 
 	public function admin_init() {
-		$this->update();
+		if ( ! self::version_check() )
+			return;
+
+		global $WPSP_Licensing;
+		if ( ! $WPSP_Licensing->valid_license() ) {
+			self::set_notice( 'notice_license', DAY_IN_SECONDS );
+			self::check_notices();
+		}
 
 		add_filter( 'plugin_action_links', array( $this, 'plugin_action_links' ), 10, 2 );
-		add_filter( 'plugin_row_meta', array( $this, 'plugin_row_meta' ), 10, 2 );
-
-		self::$settings_link = '<a href="' . get_admin_url() . 'options-general.php?page=' . WordPress_Starter_Settings::ID . '">' . __( 'Settings', 'wordpress-starter' ) . '</a>';
 	}
 
 
 	public function admin_menu() {
-		self::$menu_id = add_management_page( esc_html__( 'WordPress Starter Processer', 'wordpress-starter' ), esc_html__( 'WordPress Starter Processer', 'wordpress-starter' ), 'manage_options', self::ID, array( $this, 'user_interface' ) );
-
-		add_action( 'admin_print_scripts-' . self::$menu_id, array( $this, 'scripts' ) );
-		add_action( 'admin_print_styles-' . self::$menu_id, array( $this, 'styles' ) );
-
-		add_screen_meta_link(
-			'wps_settings_link',
-			esc_html__( 'WordPress Starter Settings', 'wordpress-starter' ),
-			admin_url( 'options-general.php?page=' . WordPress_Starter_Settings::ID ),
-			self::$menu_id,
-			array( 'style' => 'font-weight: bold;' )
-		);
+		add_action( 'admin_print_scripts', array( $this, 'scripts' ) );
+		add_action( 'admin_print_styles', array( $this, 'styles' ) );
 	}
 
 
 	public function init() {
-		load_plugin_textdomain( self::ID, false, 'wordpress-starter/languages' );
-
-		add_action( 'wp_ajax_ajax_process_post', array( $this, 'ajax_process_post' ) );
-
-		self::set_post_types();
+		load_plugin_textdomain( self::ID, false, 'wordpress-starter-premium/languages' );
 	}
 
 
 	public function plugin_action_links( $links, $file ) {
-		if ( self::PLUGIN_BASE == $file ) {
-			array_unshift( $links, self::$settings_link );
-
-			$link = '<a href="' . get_admin_url() . 'tools.php?page=' . self::ID . '">' . esc_html__( 'Process', 'wordpress-starter' ) . '</a>';
-			array_unshift( $links, $link );
-		}
+		if ( self::PLUGIN_BASE == $file )
+			array_unshift( $links, WordPress_Starter::$settings_link );
 
 		return $links;
 	}
@@ -108,6 +98,12 @@ class WordPress_Starter_Premium extends Aihrus_Common {
 	public function activation() {
 		if ( ! current_user_can( 'activate_plugins' ) )
 			return;
+
+		if ( ! is_plugin_active( WordPress_Starter_Premium::FREE_PLUGIN_BASE ) ) {
+			deactivate_plugins( WordPress_Starter_Premium::PLUGIN_BASE );
+			add_action( 'admin_notices', array( 'WordPress_Starter_Premium', 'notice_version' ) );
+			return;
+		}
 	}
 
 
@@ -123,41 +119,8 @@ class WordPress_Starter_Premium extends Aihrus_Common {
 		if ( ! current_user_can( 'activate_plugins' ) )
 			return;
 
-		global $wpdb;
-
-		require_once WPSP_PLUGIN_DIR_LIB . '/class-wordpress-starter-settings.php';
-		$delete_data = wps_get_option( 'delete_data', false );
-		if ( $delete_data ) {
-			delete_option( WordPress_Starter_Settings::ID );
-			$wpdb->query( 'OPTIMIZE TABLE `' . $wpdb->options . '`' );
-		}
-	}
-
-
-	public static function plugin_row_meta( $input, $file ) {
-		if ( self::PLUGIN_BASE != $file )
-			return $input;
-
-		$disable_donate = wps_get_option( 'disable_donate' );
-		if ( $disable_donate )
-			return $input;
-
-		$links = array(
-			'<a href="http://aihr.us/about-aihrus/donate/"><img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" alt="PayPal - The safer, easier way to pay online!" /></a>',
-			'<a href="http://aihr.us/downloads/wordpress-starter-premium-wordpress-plugin/">Purchase WordPress Starter Premium</a>',
-		);
-
-		$input = array_merge( $input, $links );
-
-		return $input;
-	}
-
-
-	public static function set_post_types() {
-		$post_types       = get_post_types( array( 'public' => true ), 'names' );
-		self::$post_types = array();
-		foreach ( $post_types as $post_type )
-			self::$post_types[] = $post_type;
+		$WPSP_Licensing = new WordPress_Starter_Premium_Licensing();
+		$WPSP_Licensing->deactivate_license();
 	}
 
 
@@ -170,7 +133,7 @@ class WordPress_Starter_Premium extends Aihrus_Common {
 	public function user_interface() {
 		// Capability check
 		if ( ! current_user_can( 'manage_options' ) )
-			wp_die( $this->post_id, esc_html__( "Your user account doesn't have permission to access this.", 'wordpress-starter' ) );
+			wp_die( $this->post_id, esc_html__( "Your user account doesn't have permission to access this." ) );
 
 ?>
 
@@ -178,7 +141,7 @@ class WordPress_Starter_Premium extends Aihrus_Common {
 
 <div class="wrap wpsposts">
 	<div class="icon32" id="icon-tools"></div>
-	<h2><?php _e( 'WordPress Starter Processer', 'wordpress-starter' ); ?></h2>
+	<h2><?php _e( 'WordPress Starter Processer' ); ?></h2>
 
 <?php
 		if ( wps_get_option( 'debug_mode' ) ) {
@@ -207,7 +170,7 @@ class WordPress_Starter_Premium extends Aihrus_Common {
 
 			$count = count( $posts );
 			if ( ! $count ) {
-				echo '	<p>' . _e( 'All done. No posts needing processing found.', 'wordpress-starter' ) . '</p></div>';
+				echo '	<p>' . _e( 'All done. No posts needing processing found.' ) . '</p></div>';
 				return;
 			}
 
@@ -223,256 +186,8 @@ class WordPress_Starter_Premium extends Aihrus_Common {
 	}
 
 
-	public static function get_posts_to_process() {
-		global $wpdb;
-
-		$query = array(
-			'post_status' => array( 'publish', 'private' ),
-			'post_type' => self::$post_types,
-			'orderby' => 'post_modified',
-			'order' => 'DESC',
-		);
-
-		$include_ids = wps_get_option( 'posts_to_import' );
-		if ( $include_ids ) {
-			$query[ 'post__in' ] = str_getcsv( $include_ids );
-		} else {
-			$query['posts_per_page'] = 1;
-			$query['meta_query']     = array(
-				array(
-					'key' => 'TBD',
-					'value' => '',
-					'compare' => '!=',
-				),
-			);
-			unset( $query['meta_query'] );
-		}
-
-		$skip_ids = wps_get_option( 'skip_importing_post_ids' );
-		if ( $skip_ids )
-			$query[ 'post__not_in' ] = str_getcsv( $skip_ids );
-
-		$results  = new WP_Query( $query );
-		$query_wp = $results->request;
-
-		$limit = wps_get_option( 'limit' );
-		if ( $limit )
-			$query_wp = preg_replace( '#\bLIMIT 0,.*#', 'LIMIT 0,' . $limit, $query_wp );
-		else
-			$query_wp = preg_replace( '#\bLIMIT 0,.*#', '', $query_wp );
-
-		$posts = $wpdb->get_col( $query_wp );
-
-		return $posts;
-	}
-
-
-	public function show_greeting() {
-?>
-	<form method="post" action="">
-<?php wp_nonce_field( self::ID ); ?>
-
-	<p><?php _e( 'Use this tool to process posts for TBD.', 'wordpress-starter' ); ?></p>
-
-	<p><?php _e( 'This processing is not reversible. Backup your database beforehand or be prepared to revert each transformmed post manually.', 'wordpress-starter' ); ?></p>
-
-	<p><?php printf( esc_html__( 'Please review your %s before proceeding.', 'wordpress-starter' ), self::$settings_link ); ?></p>
-
-	<p><?php _e( 'To begin, just press the button below.', 'wordpress-starter' ); ?></p>
-
-	<p><input type="submit" class="button hide-if-no-js" name="<?php echo self::ID; ?>" id="<?php echo self::ID; ?>" value="<?php _e( 'Process WordPress Starter', 'wordpress-starter' ) ?>" /></p>
-
-	<noscript><p><em><?php _e( 'You must enable Javascript in order to proceed!', 'wordpress-starter' ) ?></em></p></noscript>
-
-	</form>
-<?php
-	}
-
-
-	/**
-	 *
-	 *
-	 * @SuppressWarnings(PHPMD.Superglobals)
-	 */
-	public function show_status( $count, $posts ) {
-		echo '<p>' . esc_html__( 'Please be patient while this script run. This can take a while, up to a minute per post. Do not navigate away from this page until this script is done or the import will not be completed. You will be notified via this page when the import is completed.', 'wordpress-starter' ) . '</p>';
-
-		echo '<p>' . sprintf( esc_html__( 'Estimated time required to import is %1$s minutes.', 'wordpress-starter' ), ( $count * 1 ) ) . '</p>';
-
-		$text_goback = ( ! empty( $_GET['goback'] ) ) ? sprintf( __( 'To go back to the previous page, <a href="%s">click here</a>.', 'wordpress-starter' ), 'javascript:history.go(-1)' ) : '';
-
-		$text_failures = sprintf( __( 'All done! %1$s posts were successfully processed in %2$s seconds and there were %3$s failures. To try importing the failed posts again, <a href="%4$s">click here</a>. %5$s', 'wordpress-starter' ), "' + rt_successes + '", "' + rt_totaltime + '", "' + rt_errors + '", esc_url( wp_nonce_url( admin_url( 'tools.php?page=' . self::ID . '&goback=1' ) ) . '&posts=' ) . "' + rt_failedlist + '", $text_goback );
-
-		$text_nofailures = sprintf( esc_html__( 'All done! %1$s posts were successfully processed in %2$s seconds and there were no failures. %3$s', 'wordpress-starter' ), "' + rt_successes + '", "' + rt_totaltime + '", $text_goback );
-?>
-
-	<noscript><p><em><?php _e( 'You must enable Javascript in order to proceed!', 'wordpress-starter' ) ?></em></p></noscript>
-
-	<div id="wpsposts-bar" style="position:relative;height:25px;">
-		<div id="wpsposts-bar-percent" style="position:absolute;left:50%;top:50%;width:300px;margin-left:-150px;height:25px;margin-top:-9px;font-weight:bold;text-align:center;"></div>
-	</div>
-
-	<p><input type="button" class="button hide-if-no-js" name="wpsposts-stop" id="wpsposts-stop" value="<?php _e( 'Abort Processing Posts', 'wordpress-starter' ) ?>" /></p>
-
-	<h3 class="title"><?php _e( 'Status', 'wordpress-starter' ) ?></h3>
-
-	<p>
-		<?php printf( esc_html__( 'Total Postss: %s', 'wordpress-starter' ), $count ); ?><br />
-		<?php printf( esc_html__( 'Posts Processed: %s', 'wordpress-starter' ), '<span id="wpsposts-debug-successcount">0</span>' ); ?><br />
-		<?php printf( esc_html__( 'Process Failures: %s', 'wordpress-starter' ), '<span id="wpsposts-debug-failurecount">0</span>' ); ?>
-	</p>
-
-	<ol id="wpsposts-debuglist">
-		<li style="display:none"></li>
-	</ol>
-
-	<script type="text/javascript">
-	// <![CDATA[
-		jQuery(document).ready(function($){
-			var i;
-			var rt_posts = [<?php echo esc_attr( $posts ); ?>];
-			var rt_total = rt_posts.length;
-			var rt_count = 1;
-			var rt_percent = 0;
-			var rt_successes = 0;
-			var rt_errors = 0;
-			var rt_failedlist = '';
-			var rt_resulttext = '';
-			var rt_timestart = new Date().getTime();
-			var rt_timeend = 0;
-			var rt_totaltime = 0;
-			var rt_continue = true;
-
-			// Create the progress bar
-			$( "#wpsposts-bar" ).progressbar();
-			$( "#wpsposts-bar-percent" ).html( "0%" );
-
-			// Stop button
-			$( "#wpsposts-stop" ).click(function() {
-				rt_continue = false;
-				$( '#wpsposts-stop' ).val( "<?php echo esc_html__( 'Stopping, please wait a moment.', 'wordpress-starter' ); ?>" );
-			});
-
-			// Clear out the empty list element that's there for HTML validation purposes
-			$( "#wpsposts-debuglist li" ).remove();
-
-			// Called after each import. Updates debug information and the progress bar.
-			function WPSPostsUpdateStatus( id, success, response ) {
-				$( "#wpsposts-bar" ).progressbar( "value", ( rt_count / rt_total ) * 100 );
-				$( "#wpsposts-bar-percent" ).html( Math.round( ( rt_count / rt_total ) * 1000 ) / 10 + "%" );
-				rt_count = rt_count + 1;
-
-				if ( success ) {
-					rt_successes = rt_successes + 1;
-					$( "#wpsposts-debug-successcount" ).html(rt_successes);
-					$( "#wpsposts-debuglist" ).append( "<li>" + response.success + "</li>" );
-				}
-				else {
-					rt_errors = rt_errors + 1;
-					rt_failedlist = rt_failedlist + ',' + id;
-					$( "#wpsposts-debug-failurecount" ).html(rt_errors);
-					$( "#wpsposts-debuglist" ).append( "<li>" + response.error + "</li>" );
-				}
-			}
-
-			// Called when all posts have been processed. Shows the results and cleans up.
-			function WPSPostsFinishUp() {
-				rt_timeend = new Date().getTime();
-				rt_totaltime = Math.round( ( rt_timeend - rt_timestart ) / 1000 );
-
-				$( '#wpsposts-stop' ).hide();
-
-				if ( rt_errors > 0 ) {
-					rt_resulttext = '<?php echo $text_failures; ?>';
-				} else {
-					rt_resulttext = '<?php echo $text_nofailures; ?>';
-				}
-
-				$( "#message" ).html( "<p><strong>" + rt_resulttext + "</strong></p>" );
-				$( "#message" ).show();
-			}
-
-			// Regenerate a specified image via AJAX
-			function WPSPosts( id ) {
-				$.ajax({
-					type: 'POST',
-					url: ajaxurl,
-					data: {
-						action: "ajax_process_post",
-						id: id
-					},
-					success: function( response ) {
-						if ( response.success ) {
-							WPSPostsUpdateStatus( id, true, response );
-						}
-						else {
-							WPSPostsUpdateStatus( id, false, response );
-						}
-
-						if ( rt_posts.length && rt_continue ) {
-							WPSPosts( rt_posts.shift() );
-						}
-						else {
-							WPSPostsFinishUp();
-						}
-					},
-					error: function( response ) {
-						WPSPostsUpdateStatus( id, false, response );
-
-						if ( rt_posts.length && rt_continue ) {
-							WPSPosts( rt_posts.shift() );
-						}
-						else {
-							WPSPostsFinishUp();
-						}
-					}
-				});
-			}
-
-			WPSPosts( rt_posts.shift() );
-		});
-	// ]]>
-	</script>
-<?php
-	}
-
-
-	/**
-	 * Process a single post ID (this is an AJAX handler)
-	 *
-	 * @SuppressWarnings(PHPMD.ExitExpression)
-	 * @SuppressWarnings(PHPMD.Superglobals)
-	 */
-	public function ajax_process_post() {
-		if ( ! wps_get_option( 'debug_mode' ) ) {
-			error_reporting( 0 ); // Don't break the JSON result
-			header( 'Content-type: application/json' );
-			$this->post_id = intval( $_REQUEST['id'] );
-		}
-
-		$post = get_post( $this->post_id );
-		if ( ! $post || ! in_array( $post->post_type, self::$post_types )  )
-			die( json_encode( array( 'error' => sprintf( esc_html__( 'Failed Processing: %s is incorrect post type.', 'wordpress-starter' ), esc_html( $this->post_id ) ) ) ) );
-
-		$this->do_something( $this->post_id, $post );
-
-		die( json_encode( array( 'success' => sprintf( __( '&quot;<a href="%1$s" target="_blank">%2$s</a>&quot; Post ID %3$s was successfully processed in %4$s seconds.', 'wordpress-starter' ), get_permalink( $this->post_id ), esc_html( get_the_title( $this->post_id ) ), $this->post_id, timer_stop() ) ) ) );
-	}
-
-
-	/**
-	 *
-	 *
-	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
-	 */
-	public function do_something( $post_id, $post ) {
-		// do something there with the post
-		// use error_log to track happenings
-	}
-
-
 	public function notice_0_0_1() {
-		$text = sprintf( __( 'If your WordPress Starter display has gone to funky town, please <a href="%s">read the FAQ</a> about possible CSS fixes.', 'wordpress-starter' ), 'https://aihrus.zendesk.com/entries/23722573-Major-Changes-Since-2-10-0' );
+		$text = sprintf( __( 'If your WordPress Starter Premium display has gone to funky town, please <a href="%s">read the FAQ</a> about possible CSS fixes.' ), 'https://aihrus.zendesk.com/entries/23722573-Major-Changes-Since-2-10-0' );
 
 		parent::notice_updated( $text );
 	}
@@ -485,49 +200,18 @@ class WordPress_Starter_Premium extends Aihrus_Common {
 	}
 
 
-	public function update() {
-		$prior_version = wps_get_option( 'admin_notices' );
-		if ( $prior_version ) {
-			if ( $prior_version < '0.0.1' )
-				add_action( 'admin_notices', array( $this, 'notice_0_0_1' ) );
-
-			if ( $prior_version < self::VERSION )
-				do_action( 'wps_update' );
-
-			wps_set_option( 'admin_notices' );
-		}
-
-		// display donate on major/minor version release
-		$donate_version = wps_get_option( 'donate_version', false );
-		if ( ! $donate_version || ( $donate_version != self::VERSION && preg_match( '#\.0$#', self::VERSION ) ) ) {
-			add_action( 'admin_notices', array( $this, 'notice_donate' ) );
-			wps_set_option( 'donate_version', self::VERSION );
-		}
-	}
-
-
 	public static function scripts() {
-		if ( is_admin() ) {
-			wp_enqueue_script( 'jquery' );
-
-			wp_register_script( 'jquery-ui-progressbar', plugins_url( 'js/jquery.ui.progressbar.js', __FILE__ ), array( 'jquery', 'jquery-ui-core', 'jquery-ui-widget' ), '1.10.3' );
-			wp_enqueue_script( 'jquery-ui-progressbar' );
-		}
-
-		do_action( 'wps_scripts' );
+		do_action( 'wpsp_scripts' );
 	}
 
 
 	public static function styles() {
-		if ( is_admin() ) {
-			wp_register_style( 'jquery-ui-progressbar', plugins_url( 'css/redmond/jquery-ui-1.10.3.custom.min.css', __FILE__ ), false, '1.10.3' );
-			wp_enqueue_style( 'jquery-ui-progressbar' );
-		} else {
+		if ( ! is_admin() ) {
 			wp_register_style( __CLASS__, plugins_url( 'wordpress-starter-premium.css', __FILE__ ) );
 			wp_enqueue_style( __CLASS__ );
 		}
 
-		do_action( 'wps_styles' );
+		do_action( 'wpsp_styles' );
 	}
 
 
@@ -547,6 +231,61 @@ class WordPress_Starter_Premium extends Aihrus_Common {
 			$good_version = false;
 
 		return $good_version;
+	}
+
+
+	/**
+	 *
+	 *
+	 * @SuppressWarnings(PHPMD.Superglobals)
+	 */
+	public static function do_load() {
+		$do_load = false;
+		if ( ! empty( $GLOBALS['pagenow'] ) && in_array( $GLOBALS['pagenow'], array( 'edit.php', 'options.php', 'plugins.php' ) ) ) {
+			$do_load = true;
+		} elseif ( ! empty( $_REQUEST['page'] ) && 'wordpress-starter-settings' == $_REQUEST['page'] ) {
+			$do_load = true;
+		} elseif ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+			$do_load = true;
+		}
+
+		return $do_load;
+	}
+
+
+	public function load_options() {
+		add_filter( 'wps_sections', array( $this, 'sections' ) );
+		add_filter( 'wps_settings', array( $this, 'settings' ) );
+	}
+
+
+	public function sections( $sections ) {
+		$sections[ 'premium' ] = esc_html__( 'Premium' );
+
+		return $sections;
+	}
+
+
+	public function settings( $settings ) {
+		$settings['disable_donate'] = array(
+			'section' => 'premium',
+			'title' => esc_html__( 'Disable Donate Text?' ),
+			'desc' => esc_html__( 'Remove "If you like…" text with the donate and premium purchase links from the settings screen.' ),
+			'type' => 'checkbox',
+		);
+
+		return $settings;
+	}
+
+
+	public static function notice_license( $post_type = null, $settings_id = null, $free_name = null, $purchase_url = null, $item_name = null ) {
+		$post_type    = null;
+	   	$settings_id  = WordPress_Starter_Settings::ID;
+	   	$free_name    = 'WordPress Starter';
+	   	$purchase_url = 'http://aihr.us/products/wordpress-starter-premium-wordpress-plugin/';
+	   	$item_name    = self::ITEM_NAME;
+
+		parent::notice_license( $post_type, $settings_id, $free_name, $purchase_url, $item_name );
 	}
 
 
@@ -592,11 +331,9 @@ function wordpress_starter_premium_init() {
 	);
 
 	if ( WordPress_Starter_Premium::version_check() ) {
-		require_once WPSP_PLUGIN_DIR_LIB . '/class-wordpress-starter-settings.php';
-
-		global $WPS;
-		if ( is_null( $WPS ) )
-			$WPS = new WordPress_Starter_Premium();
+		global $WordPress_Starter_Premium;
+		if ( is_null( $WordPress_Starter_Premium ) )
+			$WordPress_Starter_Premium = new WordPress_Starter_Premium();
 	}
 }
 
