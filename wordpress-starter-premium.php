@@ -123,79 +123,10 @@ class WordPress_Starter_Premium extends Aihrus_Common {
 	}
 
 
-	/**
-	 *
-	 *
-	 * @SuppressWarnings(PHPMD.ExitExpression)
-	 * @SuppressWarnings(PHPMD.Superglobals)
-	 */
-	public function user_interface() {
-		// Capability check
-		if ( ! current_user_can( 'manage_options' ) )
-			wp_die( $this->post_id, esc_html__( "Your user account doesn't have permission to access this." ) );
-
-?>
-
-<div id="message" class="updated fade" style="display:none"></div>
-
-<div class="wrap wpsposts">
-	<div class="icon32" id="icon-tools"></div>
-	<h2><?php _e( 'WordPress Starter Processer' ); ?></h2>
-
-<?php
-		if ( wps_get_option( 'debug_mode' ) ) {
-			$posts_to_import = wps_get_option( 'posts_to_import' );
-			$posts_to_import = explode( ',', $posts_to_import );
-			foreach ( $posts_to_import as $post_id ) {
-				$this->post_id = $post_id;
-				$this->ajax_process_post();
-			}
-
-			exit( __LINE__ . ':' . basename( __FILE__ ) . " DONE<br />\n" );
-		}
-
-		// If the button was clicked
-		if ( ! empty( $_POST[ self::ID ] ) || ! empty( $_REQUEST['posts'] ) ) {
-			// Form nonce check
-			check_admin_referer( self::ID );
-
-			// Create the list of image IDs
-			if ( ! empty( $_REQUEST['posts'] ) ) {
-				$posts = explode( ',', trim( $_REQUEST['posts'], ',' ) );
-				$posts = array_map( 'intval', $posts );
-			} else {
-				$posts = self::get_posts_to_process();
-			}
-
-			$count = count( $posts );
-			if ( ! $count ) {
-				echo '	<p>' . _e( 'All done. No posts needing processing found.' ) . '</p></div>';
-				return;
-			}
-
-			$posts = implode( ',', $posts );
-			$this->show_status( $count, $posts );
-		} else {
-			// No button click? Display the form.
-			$this->show_greeting();
-		}
-?>
-	</div>
-<?php
-	}
-
-
 	public function notice_0_0_1() {
 		$text = sprintf( __( 'If your WordPress Starter Premium display has gone to funky town, please <a href="%s">read the FAQ</a> about possible CSS fixes.' ), 'https://aihrus.zendesk.com/entries/23722573-Major-Changes-Since-2-10-0' );
 
 		parent::notice_updated( $text );
-	}
-
-
-	public static function notice_donate( $disable_donate = null, $item_name = null ) {
-		$disable_donate = wps_get_option( 'disable_donate' );
-
-		parent::notice_donate( $disable_donate, self::ITEM_NAME );
 	}
 
 
