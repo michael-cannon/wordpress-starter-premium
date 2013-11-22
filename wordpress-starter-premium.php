@@ -42,12 +42,8 @@ class WordPress_Starter_Premium extends Aihrus_Common {
 	const SLUG             = 'wpsp_';
 	const VERSION          = '0.0.1';
 
-	private static $post_types;
-
 	public static $class;
-	public static $menu_id;
 	public static $notice_key;
-	public static $settings_link;
 
 
 	public function __construct() {
@@ -55,7 +51,7 @@ class WordPress_Starter_Premium extends Aihrus_Common {
 		add_action( 'init', array( $this, 'init' ) );
 		add_shortcode( 'wordpress_starter_premium_shortcode', array( $this, 'wordpress_starter_premium_shortcode' ) );
 
-		if ( self::do_load() ) {
+		if ( WordPress_Starter::do_load() ) {
 			add_action( 'admin_menu', array( $this, 'admin_menu' ) );
 			self::load_options();
 		}
@@ -84,6 +80,9 @@ class WordPress_Starter_Premium extends Aihrus_Common {
 
 	public function init() {
 		load_plugin_textdomain( self::ID, false, 'wordpress-starter-premium/languages' );
+
+		add_action( 'wps_scripts', array( $this, 'scripts' ) );
+		add_action( 'wps_styles', array( $this, 'styles' ) );
 	}
 
 
@@ -200,7 +199,7 @@ class WordPress_Starter_Premium extends Aihrus_Common {
 	}
 
 
-	public static function scripts() {
+	public static function scripts( $atts ) {
 		do_action( 'wpsp_scripts' );
 	}
 
@@ -216,8 +215,7 @@ class WordPress_Starter_Premium extends Aihrus_Common {
 
 
 	public static function wordpress_starter_premium_shortcode( $atts ) {
-		self::scripts();
-		self::styles();
+		WordPress_Starter::call_scripts_styles( $atts );
 
 		return __CLASS__ . ' shortcode';
 	}
@@ -231,25 +229,6 @@ class WordPress_Starter_Premium extends Aihrus_Common {
 			$good_version = false;
 
 		return $good_version;
-	}
-
-
-	/**
-	 *
-	 *
-	 * @SuppressWarnings(PHPMD.Superglobals)
-	 */
-	public static function do_load() {
-		$do_load = false;
-		if ( ! empty( $GLOBALS['pagenow'] ) && in_array( $GLOBALS['pagenow'], array( 'edit.php', 'options.php', 'plugins.php' ) ) ) {
-			$do_load = true;
-		} elseif ( ! empty( $_REQUEST['page'] ) && 'wordpress-starter-settings' == $_REQUEST['page'] ) {
-			$do_load = true;
-		} elseif ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
-			$do_load = true;
-		}
-
-		return $do_load;
 	}
 
 
@@ -310,6 +289,7 @@ function wordpress_starter_premium_init() {
 	if ( ! is_admin() )
 		return;
 
+	require_once WPS_PLUGIN_DIR_LIB . '/class-wordpress-starter-settings.php';
 	require_once WPSP_PLUGIN_DIR_LIB . '/class-wordpress-starter-premium-licensing.php';
 
 	global $WPSP_Licensing;
