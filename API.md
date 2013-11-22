@@ -1,4 +1,4 @@
-# API for WordPress WordPress Starter Premium plugin
+# API WordPress Starter Premium
 
 The [WordPress Starter Premium plugin](http://wordpress.org/plugins/wordpress-starter/) comes with its own set of actions and filters, as described below.
 

@@ -14,7 +14,7 @@ OLD_BASE="wordpress-starter-premium"
 OLD_CLASS="WordPress_Starter_Premium"
 OLD_FILTER="wordpress_starter_premium"
 OLD_KB_PATH="20102742-WordPress-Starter-Plugin"
-OLD_SITE="http://wordpress.org/extend/plugins/wordpress-starter-premium/"
+OLD_SITE="http://wordpress.org/plugins/wordpress-starter-premium/"
 OLD_SLUG="WPSP_"
 OLD_TITLE="WordPress Starter Premium"
 

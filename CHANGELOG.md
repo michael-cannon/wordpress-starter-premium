@@ -1,4 +1,4 @@
-# CHANGELOG for WordPress WordPress Starter Premium plugin
+# CHANGELOG WordPress Starter Premium
 
 ## master
 * TBD
@@ -10,3 +10,4 @@
 * Add `do_load` 
 * Enable licensing 
 * Make scripts/styles consistent
+* Revise headers
