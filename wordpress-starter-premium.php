@@ -23,6 +23,13 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  */
+
+if ( ! defined( 'WPS_PLUGIN_DIR' ) )
+	define( 'WPS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) . '/../wordpress-starter' );
+
+if ( ! defined( 'WPS_PLUGIN_DIR_LIB' ) )
+	define( 'WPS_PLUGIN_DIR_LIB', WPS_PLUGIN_DIR . '/lib' );
+
 if ( ! defined( 'WPSP_PLUGIN_DIR' ) )
 	define( 'WPSP_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 
