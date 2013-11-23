@@ -23,7 +23,6 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  */
-
 if ( ! defined( 'WPSP_PLUGIN_DIR' ) )
 	define( 'WPSP_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 
@@ -130,6 +129,11 @@ class WordPress_Starter_Premium extends Aihrus_Common {
 	}
 
 
+	/**
+	 *
+	 *
+	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+	 */
 	public static function scripts( $atts ) {
 		do_action( 'wpsp_scripts' );
 	}
@@ -190,10 +194,10 @@ class WordPress_Starter_Premium extends Aihrus_Common {
 
 	public static function notice_license( $post_type = null, $settings_id = null, $free_name = null, $purchase_url = null, $item_name = null ) {
 		$post_type    = null;
-	   	$settings_id  = WordPress_Starter_Settings::ID;
-	   	$free_name    = 'WordPress Starter';
-	   	$purchase_url = 'http://aihr.us/products/wordpress-starter-premium-wordpress-plugin/';
-	   	$item_name    = self::ITEM_NAME;
+		$settings_id  = WordPress_Starter_Settings::ID;
+		$free_name    = 'WordPress Starter';
+		$purchase_url = 'http://aihr.us/products/wordpress-starter-premium-wordpress-plugin/';
+		$item_name    = self::ITEM_NAME;
 
 		parent::notice_license( $post_type, $settings_id, $free_name, $purchase_url, $item_name );
 	}
