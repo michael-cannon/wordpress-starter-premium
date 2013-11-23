@@ -42,7 +42,7 @@ class WordPress_Starter_Premium extends Aihrus_Common {
 	const SLUG             = 'wpsp_';
 	const VERSION          = '0.0.1';
 
-	public static $class;
+	public static $class = __CLASS__;
 	public static $notice_key;
 
 
