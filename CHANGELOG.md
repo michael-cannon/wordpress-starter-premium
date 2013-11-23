@@ -12,3 +12,4 @@
 * Enable licensing 
 * Make scripts/styles consistent
 * Revise headers
+* Update `version_check` for free requirements

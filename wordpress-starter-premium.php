@@ -166,9 +166,20 @@ class WordPress_Starter_Premium extends Aihrus_Common {
 	public static function version_check() {
 		require_once ABSPATH . 'wp-admin/includes/plugin.php';
 
+		$base         = self::PLUGIN_BASE;
 		$good_version = true;
-		if ( ! is_plugin_active( self::PLUGIN_BASE ) )
+
+		if ( ! is_plugin_active( $base ) )
 			$good_version = false;
+
+		if ( is_plugin_inactive( self::FREE_PLUGIN_BASE ) || WordPress_Starter::VERSION < self::FREE_VERSION )
+			$good_version = false;
+
+		if ( ! $good_version && is_plugin_active( $base ) ) {
+			deactivate_plugins( $base );
+			self::set_notice( 'notice_version' );
+			self::check_notices();
+		}
 
 		return $good_version;
 	}
