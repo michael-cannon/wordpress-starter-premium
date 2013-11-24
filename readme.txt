@@ -54,7 +54,7 @@ The WordPress KEYWORD plugin, WordPress Starter Premium, FREE_DESCRIPTION.
 
 = API =
 
-* Read the [WordPress Starter Premium API](https://github.com/michael-cannon/wordpress-starter-premium/blob/master/API.md).
+* Read the [WordPress Starter Premium API](http://wordpress.org/plugins/wordpress-starter-premium/api/).
 
 = Languages =
 
@@ -66,7 +66,7 @@ See the FAQ for further localization tips.
 
 Please visit the [WordPress Starter Premium Knowledge Base](https://aihrus.zendesk.com/categories/20102742-WordPress-Starter-Plugin) for frequently asked questions, offering ideas, or getting support.
 
-If you want to contribute and I hope you do, visit the [WordPress Starter Premium Github repository](https://github.com/michael-cannon/wordpress-starter-premium).
+If you want to contribute and I hope you do, [contact Aihrus](http://aihr.us/contact-aihrus/).
 
 
 == Installation ==
@@ -90,7 +90,7 @@ Please visit the [WordPress Starter Premium Knowledge Base](https://aihrus.zende
 
 == Changelog ==
 
-See [CHANGELOG](https://github.com/michael-cannon/wordpress-starter-premium/blob/master/CHANGELOG.md)
+See [CHANGELOG](http://wordpress.org/plugins/wordpress-starter-premium/changelog/)
 
 
 == Upgrade Notice ==
@@ -112,4 +112,4 @@ Beta testers benefit directly with latest versions, a free 1-site license for Wo
 
 == TODO ==
 
-See [TODO](https://github.com/michael-cannon/wordpress-starter-premium/blob/master/TODO.md)
+See [TODO](http://wordpress.org/plugins/wordpress-starter-premium/todo/)
