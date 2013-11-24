@@ -14,7 +14,7 @@ TBD
 
 == Description ==
 
-WordPress Starter Premium adds onto the best WordPress KEYWORD plugin there is, [WordPress Starter Premium](http://wordpress.org/plugins/wordpress-starter/). WordPress Starter Premium offers [PREMIUM_FEATURES](http://aihr.us/downloads/). Additionally, SECONDARY_FEATURES.
+WordPress Starter Premium adds onto the best WordPress KEYWORD plugin there is, [WordPress Starter Premium](http://wordpress.org/plugins/wordpress-starter-premium/). WordPress Starter Premium offers [PREMIUM_FEATURES](http://aihr.us/downloads/). Additionally, SECONDARY_FEATURES.
 
 http://www.youtube.com/watch?v=TBD
 **[Video introduction](http://youtu.be/TBD)**
@@ -54,11 +54,11 @@ The WordPress KEYWORD plugin, WordPress Starter Premium, FREE_DESCRIPTION.
 
 = API =
 
-* Read the [WordPress Starter Premium API](https://github.com/michael-cannon/wordpress-starter/blob/master/API.md).
+* Read the [WordPress Starter Premium API](https://github.com/michael-cannon/wordpress-starter-premium/blob/master/API.md).
 
 = Languages =
 
-You can translate this plugin into your own language if it's not done so already. The localization file `wordpress-starter.pot` can be found in the `languages` folder of this plugin. After translation, please [send the localized file](http://aihr.us/contact-aihrus/) to the plugin author.
+You can translate this plugin into your own language if it's not done so already. The localization file `wordpress-starter-premium.pot` can be found in the `languages` folder of this plugin. After translation, please [send the localized file](http://aihr.us/contact-aihrus/) to the plugin author.
 
 See the FAQ for further localization tips.
 
@@ -66,13 +66,13 @@ See the FAQ for further localization tips.
 
 Please visit the [WordPress Starter Premium Knowledge Base](https://aihrus.zendesk.com/categories/20102742-WordPress-Starter-Plugin) for frequently asked questions, offering ideas, or getting support.
 
-If you want to contribute and I hope you do, visit the [WordPress Starter Premium Github repository](https://github.com/michael-cannon/wordpress-starter).
+If you want to contribute and I hope you do, visit the [WordPress Starter Premium Github repository](https://github.com/michael-cannon/wordpress-starter-premium).
 
 
 == Installation ==
 
-1. Via WordPress Admin > Plugins > Add New, Upload the `wordpress-starter.zip` file
-1. Alternately, unzip `wordpress-starter.zip` the file and then via FTP, upload `wordpress-starter` directory to the `/wp-content/plugins/` directory
+1. Via WordPress Admin > Plugins > Add New, Upload the `wordpress-starter-premium.zip` file
+1. Alternately, unzip `wordpress-starter-premium.zip` the file and then via FTP, upload `wordpress-starter-premium` directory to the `/wp-content/plugins/` directory
 1. Activate the 'WordPress Starter Premium' plugin after uploading or through WP Admin > Plugins
 1. Set the license key via WP Admin > Settings > WordPress Starter, Premium tab, License Key field
 1. License key activation is automatic upon clicking Save Changes.
@@ -90,7 +90,7 @@ Please visit the [WordPress Starter Premium Knowledge Base](https://aihrus.zende
 
 == Changelog ==
 
-See [Changelog](https://github.com/michael-cannon/wordpress-starter/blob/master/CHANGELOG.md)
+See [CHANGELOG](https://github.com/michael-cannon/wordpress-starter-premium/blob/master/CHANGELOG.md)
 
 
 == Upgrade Notice ==
@@ -112,4 +112,4 @@ Beta testers benefit directly with latest versions, a free 1-site license for Wo
 
 == TODO ==
 
-See [TODO](https://github.com/michael-cannon/wordpress-starter/blob/master/TODO.md)
+See [TODO](https://github.com/michael-cannon/wordpress-starter-premium/blob/master/TODO.md)
