@@ -53,18 +53,18 @@ class WordPress_Starter_Premium extends Aihrus_Common {
 
 
 	public function __construct() {
-		add_action( 'admin_init', array( $this, 'admin_init' ) );
-		add_action( 'init', array( $this, 'init' ) );
-		add_shortcode( 'wordpress_starter_premium_shortcode', array( $this, 'wordpress_starter_premium_shortcode' ) );
+		add_action( 'admin_init', array( __CLASS__, 'admin_init' ) );
+		add_action( 'init', array( __CLASS__, 'init' ) );
+		add_shortcode( 'wordpress_starter_premium_shortcode', array( __CLASS__, 'wordpress_starter_premium_shortcode' ) );
 
-		if ( WordPress_Starter::do_load() ) {
-			add_action( 'admin_menu', array( $this, 'admin_menu' ) );
-			self::load_options();
-		}
+		if ( ! WordPress_Starter::do_load() )
+			return;
+
+		add_action( 'admin_menu', array( __CLASS__, 'admin_menu' ) );
 	}
 
 
-	public function admin_init() {
+	public static function admin_init() {
 		if ( ! self::version_check() )
 			return;
 
@@ -74,25 +74,30 @@ class WordPress_Starter_Premium extends Aihrus_Common {
 			self::check_notices();
 		}
 
-		add_filter( 'plugin_action_links', array( $this, 'plugin_action_links' ), 10, 2 );
+		add_filter( 'plugin_action_links', array( __CLASS__, 'plugin_action_links' ), 10, 2 );
 	}
 
 
-	public function admin_menu() {
-		add_action( 'admin_print_scripts', array( $this, 'scripts' ) );
-		add_action( 'admin_print_styles', array( $this, 'styles' ) );
+	public static function admin_menu() {
+		add_action( 'admin_print_scripts', array( __CLASS__, 'scripts' ) );
+		add_action( 'admin_print_styles', array( __CLASS__, 'styles' ) );
 	}
 
 
-	public function init() {
+	public static function init() {
 		load_plugin_textdomain( self::ID, false, 'wordpress-starter-premium/languages' );
 
-		add_action( 'wps_scripts', array( $this, 'scripts' ) );
-		add_action( 'wps_styles', array( $this, 'styles' ) );
+		if ( ! WordPress_Starter::do_load() )
+			return;
+
+		self::load_options();
+
+		add_action( 'wps_scripts', array( __CLASS__, 'scripts' ) );
+		add_action( 'wps_styles', array( __CLASS__, 'styles' ) );
 	}
 
 
-	public function plugin_action_links( $links, $file ) {
+	public static function plugin_action_links( $links, $file ) {
 		if ( self::PLUGIN_BASE == $file )
 			array_unshift( $links, WordPress_Starter::$settings_link );
 
@@ -100,7 +105,7 @@ class WordPress_Starter_Premium extends Aihrus_Common {
 	}
 
 
-	public function activation() {
+	public static function activation() {
 		if ( ! current_user_can( 'activate_plugins' ) )
 			return;
 
@@ -112,7 +117,7 @@ class WordPress_Starter_Premium extends Aihrus_Common {
 	}
 
 
-	public function deactivation() {
+	public static function deactivation() {
 		if ( ! current_user_can( 'activate_plugins' ) )
 			return;
 
@@ -120,7 +125,7 @@ class WordPress_Starter_Premium extends Aihrus_Common {
 	}
 
 
-	public function uninstall() {
+	public static function uninstall() {
 		if ( ! current_user_can( 'activate_plugins' ) )
 			return;
 
@@ -129,7 +134,7 @@ class WordPress_Starter_Premium extends Aihrus_Common {
 	}
 
 
-	public function notice_0_0_1() {
+	public static function notice_0_0_1() {
 		$text = sprintf( __( 'If your WordPress Starter Premium display has gone to funky town, please <a href="%s">read the FAQ</a> about possible CSS fixes.' ), 'https://aihrus.zendesk.com/entries/23722573-Major-Changes-Since-2-10-0' );
 
 		parent::notice_updated( $text );
@@ -185,20 +190,20 @@ class WordPress_Starter_Premium extends Aihrus_Common {
 	}
 
 
-	public function load_options() {
-		add_filter( 'wps_sections', array( $this, 'sections' ) );
-		add_filter( 'wps_settings', array( $this, 'settings' ) );
+	public static function load_options() {
+		add_filter( 'wps_sections', array( __CLASS__, 'sections' ) );
+		add_filter( 'wps_settings', array( __CLASS__, 'settings' ) );
 	}
 
 
-	public function sections( $sections ) {
+	public static function sections( $sections ) {
 		$sections[ 'premium' ] = esc_html__( 'Premium' );
 
 		return $sections;
 	}
 
 
-	public function settings( $settings ) {
+	public static function settings( $settings ) {
 		$settings['disable_donate'] = array(
 			'section' => 'premium',
 			'title' => esc_html__( 'Disable Donate Text?' ),
@@ -267,6 +272,8 @@ function wordpress_starter_premium_init() {
 		global $WordPress_Starter_Premium;
 		if ( is_null( $WordPress_Starter_Premium ) )
 			$WordPress_Starter_Premium = new WordPress_Starter_Premium();
+
+		do_action( 'wpsp_init' );
 	}
 }
 
