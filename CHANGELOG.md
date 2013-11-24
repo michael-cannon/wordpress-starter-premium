@@ -10,9 +10,12 @@
 * $this to __CLASS__
 * Add WPS_PLUGIN_DIR path
 * Add `do_load` 
+* Add licensing texts
+* Add missing `notice_version`
 * Add plugin init load action `wpsp_init`
 * Correct premium prep defaults
 * Enable licensing 
+* Include CSS in plugin prepartions
 * Make scripts/styles consistent
 * Revise headers
 * Update `version_check` for free requirements

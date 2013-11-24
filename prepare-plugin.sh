@@ -21,7 +21,7 @@ OLD_FILTER="${OLD_SLUG}"
 echo
 echo "Begin converting ${OLD_TITLE} to ${NEW_TITLE} plugin"
 
-FILES=`find . -type f \( -name "*.md" -o -name "*.php" -o -name "*.txt" -o -name "*.xml" \)`
+FILES=`find . -type f \( -name "*.css" -o -name "*.md" -o -name "*.php" -o -name "*.txt" -o -name "*.xml" \)`
 for FILE in ${FILES} 
 do
 	if [[ '' != ${NEW_ABBR} ]]
@@ -58,6 +58,7 @@ do
 	if [[ '' != ${NEW_SLUG} ]]
 	then
 		perl -pi -e "s#${OLD_SLUG}#${NEW_SLUG}#g" ${FILE}
+		perl -pi -e "s#${NEW_SLUG}_#${NEW_SLUG}#g" ${FILE}
 	fi
 
 	if [[ '' != ${NEW_TITLE} ]]

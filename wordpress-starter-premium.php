@@ -183,8 +183,10 @@ class WordPress_Starter_Premium extends Aihrus_Common {
 		if ( ! $good_version && is_plugin_active( $base ) ) {
 			deactivate_plugins( $base );
 			self::set_notice( 'notice_version' );
-			self::check_notices();
 		}
+
+		if ( ! $good_version )
+			self::check_notices();
 
 		return $good_version;
 	}
@@ -226,6 +228,15 @@ class WordPress_Starter_Premium extends Aihrus_Common {
 	}
 
 
+	public static function notice_version( $free_base = null, $free_name = null, $free_slug = null, $free_version = null, $item_name = null ) {
+		$free_base    = self::FREE_PLUGIN_BASE;
+	   	$free_name    = 'WordPress Starter';
+		$free_slug    = 'wordpress-starter';
+		$free_version = self::FREE_VERSION;
+		$item_name    = self::ITEM_NAME;
+
+		parent::notice_version( $free_base, $free_name, $free_slug, $free_version, $item_name );
+	}
 }
 
 

@@ -74,6 +74,8 @@ If you want to contribute and I hope you do, visit the [WordPress Starter Premiu
 1. Via WordPress Admin > Plugins > Add New, Upload the `wordpress-starter.zip` file
 1. Alternately, unzip `wordpress-starter.zip` the file and then via FTP, upload `wordpress-starter` directory to the `/wp-content/plugins/` directory
 1. Activate the 'WordPress Starter Premium' plugin after uploading or through WP Admin > Plugins
+1. Set the license key via WP Admin > Settings > WordPress Starter, Premium tab, License Key field
+1. License key activation is automatic upon clicking Save Changes.
 
 
 == Frequently Asked Questions ==
