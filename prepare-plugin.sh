@@ -12,11 +12,11 @@ NEW_FILTER="${NEW_SLUG}"
 OLD_ABBR="WPSP_"
 OLD_BASE="wordpress-starter-premium"
 OLD_CLASS="WordPress_Starter_Premium"
-OLD_FILTER="wordpress_starter_premium"
 OLD_KB_PATH="20102742-WordPress-Starter-Plugin"
 OLD_SITE="http://wordpress.org/plugins/wordpress-starter-premium/"
 OLD_SLUG="wpsp_"
 OLD_TITLE="WordPress Starter Premium"
+OLD_FILTER="${OLD_SLUG}"
 
 echo
 echo "Begin converting ${OLD_TITLE} to ${NEW_TITLE} plugin"
@@ -71,10 +71,10 @@ then
 	rm 000-code-qa.txt
 fi
 
-mv ${OLD_SLUG}.css ${NEW_SLUG}.css
-mv ${OLD_SLUG}.php ${NEW_SLUG}.php
-mv languages/${OLD_SLUG}.pot languages/${NEW_SLUG}.pot
-mv lib/class-${OLD_SLUG}-licensing.php lib/class-${NEW_SLUG}-licensing.php
+mv ${OLD_BASE}.css ${NEW_BASE}.css
+mv ${OLD_BASE}.php ${NEW_BASE}.php
+mv languages/${OLD_BASE}.pot languages/${NEW_BASE}.pot
+mv lib/class-${OLD_BASE}-licensing.php lib/class-${NEW_BASE}-licensing.php
 
 if [[ -e .git ]]
 then
