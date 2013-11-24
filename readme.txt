@@ -87,6 +87,8 @@ Please visit the [WordPress Starter Premium Knowledge Base](https://aihrus.zende
 
 1. TBD
 
+[gallery]
+
 
 == Changelog ==
 

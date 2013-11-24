@@ -9,6 +9,7 @@
 ## 0.0.0
 * $this to __CLASS__
 * Add WPS_PLUGIN_DIR path
+* Add [[gallery]]
 * Add `do_load` 
 * Add licensing texts
 * Add missing `notice_version`
