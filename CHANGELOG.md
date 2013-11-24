@@ -11,6 +11,7 @@
 * Add WPS_PLUGIN_DIR path
 * Add `do_load` 
 * Add plugin init load action `wpsp_init`
+* Correct premium prep defaults
 * Enable licensing 
 * Make scripts/styles consistent
 * Revise headers

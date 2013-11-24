@@ -1,21 +1,21 @@
 #!/bin/bash
 
-NEW_ABBR="cbqe_"
-NEW_BASE="custom-bulk-quick-edit"
-NEW_CLASS="Custom_Bulk_Quick_Edit"
+NEW_ABBR="CBQEP_"
+NEW_BASE="custom-bulk-quick-edit-premium"
+NEW_CLASS="Custom_Bulk_Quick_Edit_Premium"
 NEW_FILTER="${NEW_ABBR}"
-NEW_KB_PATH="20112546-Custom-Bulk-Quick-Edit"
+NEW_KB_PATH="20112546-Custom-Bulk-Quick-Edit-Premium"
 NEW_SITE=""
-NEW_SLUG="CBQE_"
-NEW_TITLE="Custom Bulk/Quick Edit"
+NEW_SLUG="cbqep_"
+NEW_TITLE="Custom Bulk/Quick Edit Premium"
 
-OLD_ABBR="wpsp_"
+OLD_ABBR="WPSP_"
 OLD_BASE="wordpress-starter-premium"
 OLD_CLASS="WordPress_Starter_Premium"
 OLD_FILTER="wordpress_starter_premium"
 OLD_KB_PATH="20102742-WordPress-Starter-Plugin"
 OLD_SITE="http://wordpress.org/plugins/wordpress-starter-premium/"
-OLD_SLUG="WPSP_"
+OLD_SLUG="wpsp_"
 OLD_TITLE="WordPress Starter Premium"
 
 echo
