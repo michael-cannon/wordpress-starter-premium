@@ -18,4 +18,5 @@
 * Include CSS in plugin prepartions
 * Make scripts/styles consistent
 * Revise headers
+* Separate license key entries
 * Update `version_check` for free requirements

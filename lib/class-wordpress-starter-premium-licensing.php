@@ -28,9 +28,12 @@ class WordPress_Starter_Premium_Licensing extends Aihrus_Licensing{
 
 
 	public function settings( $settings ) {
-		$settings['license_key'] = array(
+		$title = esc_html__( 'License Key for %1$s' );
+
+		$settings[ WordPress_Starter_Premium::SLUG . 'license_key' ] = array(
 			'section' => 'premium',
 			'title' => esc_html__( 'License Key' ),
+			'title' => sprintf( $title, WordPress_Starter_Premium::ITEM_NAME ),
 			'desc' => esc_html__( 'Required to enable premium plugin updating. Activation is automatic. Use `0` to deactivate.' ),
 			'validate' => 'wpsp_update_license',
 			'widget' => 0,
