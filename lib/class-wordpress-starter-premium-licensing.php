@@ -46,6 +46,11 @@ class WordPress_Starter_Premium_Licensing extends Aihrus_Licensing{
 }
 
 
+/**
+ *
+ *
+ * @SuppressWarnings(PHPMD.LongVariable)
+ */
 function wpsp_update_license( $license ) {
 	global $WPSP_Licensing;
 

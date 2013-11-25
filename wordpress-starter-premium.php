@@ -64,6 +64,11 @@ class WordPress_Starter_Premium extends Aihrus_Common {
 	}
 
 
+	/**
+	 *
+	 *
+	 * @SuppressWarnings(PHPMD.LongVariable)
+	 */
 	public static function admin_init() {
 		if ( ! self::version_check() )
 			return;
@@ -125,6 +130,11 @@ class WordPress_Starter_Premium extends Aihrus_Common {
 	}
 
 
+	/**
+	 *
+	 *
+	 * @SuppressWarnings(PHPMD.LongVariable)
+	 */
 	public static function uninstall() {
 		if ( ! current_user_can( 'activate_plugins' ) )
 			return;
