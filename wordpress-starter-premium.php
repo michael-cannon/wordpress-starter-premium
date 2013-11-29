@@ -147,7 +147,7 @@ class WordPress_Starter_Premium extends Aihrus_Common {
 	public static function notice_0_0_1() {
 		$text = sprintf( __( 'If your WordPress Starter Premium display has gone to funky town, please <a href="%s">read the FAQ</a> about possible CSS fixes.' ), 'https://aihrus.zendesk.com/entries/23722573-Major-Changes-Since-2-10-0' );
 
-		parent::notice_updated( $text );
+		self::notice_updated( $text );
 	}
 
 
