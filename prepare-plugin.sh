@@ -6,6 +6,7 @@ NEW_CLASS="Custom_Bulk_Quick_Edit_Premium"
 NEW_KB_PATH="20112546-Custom-Bulk-Quick-Edit"
 NEW_SITE=""
 NEW_SLUG="cbqep_"
+NEW_SLUG_LONG="custom_bulk_quick_edit_premium"
 NEW_TITLE="Custom Bulk/Quick Edit Premium"
 NEW_FILTER="${NEW_SLUG}"
 
@@ -15,6 +16,7 @@ OLD_CLASS="WordPress_Starter_Premium"
 OLD_KB_PATH="20102742-WordPress-Starter-Plugin"
 OLD_SITE="http://wordpress.org/plugins/wordpress-starter-premium/"
 OLD_SLUG="wpsp_"
+OLD_SLUG_LONG="wordpress_starter_premium"
 OLD_TITLE="WordPress Starter Premium"
 OLD_FILTER="${OLD_SLUG}"
 
@@ -61,6 +63,11 @@ do
 		perl -pi -e "s#${NEW_SLUG}_#${NEW_SLUG}#g" ${FILE}
 	fi
 
+	if [[ '' != ${NEW_SLUG_LONG} ]]
+	then
+		perl -pi -e "s#${OLD_SLUG_LONG}#${NEW_SLUG_LONG}#g" ${FILE}
+	fi
+
 	if [[ '' != ${NEW_TITLE} ]]
 	then
 		perl -pi -e "s#${OLD_TITLE}#${NEW_TITLE}#g" ${FILE}
@@ -82,6 +89,11 @@ then
 	rm -rf .git
 fi
 
+if [[ -e lib/aihrus ]]
+then
+	rm lib/aihrus
+fi
+
 git init
 git add *
 git add .gitignore
@@ -91,5 +103,5 @@ echo "git remote add origin git@github.com:michael-cannon/${NEW_BASE}.git"
 git remote add aihrus git@github.com:michael-cannon/aihrus-framework.git
 git fetch aihrus 
 git subtree add -P lib/aihrus --squash aihrus master
-git commit -a -m "Add in aihrus framework"
+git commit -a -m "Link in Aihrus Framework"
 echo "git push origin master"
