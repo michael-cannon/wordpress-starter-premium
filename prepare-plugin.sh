@@ -98,7 +98,7 @@ git init
 git add *
 git add .gitignore
 git commit -m "Initial plugin creation"
-echo "git remote add origin git@github.com:michael-cannon/${NEW_BASE}.git"
+git remote add origin git@github.com:michael-cannon/${NEW_BASE}.git
 
 git remote add aihrus git@github.com:michael-cannon/aihrus-framework.git
 git fetch aihrus 
