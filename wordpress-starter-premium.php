@@ -38,6 +38,11 @@ if ( ! defined( 'WPSP_PLUGIN_DIR_LIB' ) )
 
 require_once WPSP_PLUGIN_DIR_LIB . '/aihrus/class-aihrus-common.php';
 
+if ( af_php_version_check( __FILE__ ) )
+	add_action( 'plugins_loaded', 'wordpress_starter_premium_init', 99 );
+else
+	return;
+
 
 class WordPress_Starter_Premium extends Aihrus_Common {
 	const FREE_PLUGIN_BASE = 'wordpress-starter/wordpress-starter.php';
@@ -253,9 +258,6 @@ class WordPress_Starter_Premium extends Aihrus_Common {
 register_activation_hook( __FILE__, array( 'WordPress_Starter_Premium', 'activation' ) );
 register_deactivation_hook( __FILE__, array( 'WordPress_Starter_Premium', 'deactivation' ) );
 register_uninstall_hook( __FILE__, array( 'WordPress_Starter_Premium', 'uninstall' ) );
-
-
-add_action( 'plugins_loaded', 'wordpress_starter_premium_init', 99 );
 
 
 /**
