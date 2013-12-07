@@ -154,7 +154,7 @@ See [CHANGELOG](http://aihr.us/wordpress-starter-premium/changelog/)
 
 == Notes ==
 
-* TBD
+* When plugin is uninstalled, licensing is deactivated
 
 
 == API ==
