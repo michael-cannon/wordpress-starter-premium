@@ -3,21 +3,23 @@
 NEW_ABBR="CBQEP_"
 NEW_BASE="custom-bulk-quick-edit-premium"
 NEW_CLASS="Custom_Bulk_Quick_Edit_Premium"
-NEW_KB_PATH="20112546-Custom-Bulk-Quick-Edit"
+NEW_KB_PATH="20112546"
 NEW_SITE=""
 NEW_SLUG="cbqep_"
 NEW_SLUG_LONG="custom_bulk_quick_edit_premium"
 NEW_TITLE="Custom Bulk/Quick Edit Premium"
+NEW_TITLE_SHORT="Custom Bulk/Quick Edit"
 NEW_FILTER="${NEW_SLUG}"
 
 OLD_ABBR="WPSP_"
 OLD_BASE="wordpress-starter-premium"
 OLD_CLASS="WordPress_Starter_Premium"
-OLD_KB_PATH="20102742-WordPress-Starter-Plugin"
+OLD_KB_PATH="20102742"
 OLD_SITE="http://wordpress.org/plugins/wordpress-starter-premium/"
 OLD_SLUG="wpsp_"
 OLD_SLUG_LONG="wordpress_starter_premium"
 OLD_TITLE="WordPress Starter Premium"
+OLD_TITLE_SHORT="WordPress Starter"
 OLD_FILTER="${OLD_SLUG}"
 
 echo
@@ -72,6 +74,11 @@ do
 	then
 		perl -pi -e "s#${OLD_TITLE}#${NEW_TITLE}#g" ${FILE}
 	fi
+
+	if [[ '' != ${NEW_TITLE_SHORT} ]]
+	then
+		perl -pi -e "s#${OLD_TITLE_SHORT}#${NEW_TITLE_SHORT}#g" ${FILE}
+	fi
 done
 
 if [[ -e 000-code-qa.txt ]]
@@ -99,9 +106,4 @@ git add *
 git add .gitignore
 git commit -m "Initial plugin creation"
 git remote add origin git@github.com:michael-cannon/${NEW_BASE}.git
-
-git remote add aihrus git@github.com:michael-cannon/aihrus-framework.git
-git fetch aihrus 
-git subtree add -P lib/aihrus --squash aihrus master
-git commit -a -m "Link in Aihrus Framework"
 echo "git push origin master"

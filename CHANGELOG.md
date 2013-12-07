@@ -3,7 +3,7 @@
 ## master
 * TBD
 
-## 0.0.1
+## 1.0.0
 * Initial code release 
 
 ## 0.0.0
@@ -20,5 +20,6 @@
 * Include CSS in plugin prepartions
 * Make scripts/styles consistent
 * Revise headers
+* Revise readme structure
 * Separate license key entries
 * Update `version_check` for free requirements

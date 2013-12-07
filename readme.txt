@@ -5,7 +5,7 @@ Donate link: http://aihr.us/about-aihrus/donate/
 Tags: t, b, d
 Requires at least: 3.6
 Tested up to: 3.8.0
-Stable tag: 0.0.1
+Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,21 +14,46 @@ TBD
 
 == Description ==
 
-WordPress Starter Premium adds onto the best WordPress KEYWORD plugin there is, [WordPress Starter Premium](http://wordpress.org/plugins/wordpress-starter-premium/). WordPress Starter Premium offers [PREMIUM_FEATURES](http://aihr.us/downloads/). Additionally, SECONDARY_FEATURES.
+WordPress Starter Premium adds onto the best WordPress KEYWORD plugin there is, [WordPress Starter Premium](http://aihr.us/wordpress-starter-premium/). WordPress Starter Premium offers [PREMIUM_FEATURES](http://aihr.us/products/wordpress-starter-premium/). Additionally, SECONDARY_FEATURES.
 
 http://www.youtube.com/watch?v=TBD
-**[Video introduction](http://youtu.be/TBD)**
 
-The WordPress KEYWORD plugin, WordPress Starter Premium, FREE_DESCRIPTION.
+**[Video introduction](http://www.youtube.com/watch?v=TBD)**
 
-= Primary Features =
+**Version 2.16.0+ requires PHP 5.3+** [notice](https://aihrus.zendesk.com/entries/30678006)
+
+The WordPress KEYWORD plugin, WordPress Starter Premium, TBD.
+
+= Primary Premium Features =
 
 * Ajax based processing screen
 * API
 * Settings export/import
 * Settings screen
 
-= Settings Options =
+= Shortcodes =
+
+* TBD
+
+= Theme Functions =
+
+* TBD
+
+= Additional Features =
+
+* TBD
+
+= Shortcode Examples =
+
+* TBD
+
+= Localization =
+
+You can translate this plugin into your own language if it's not done so already. The localization file `wordpress-starter.pot` can be found in the `languages` folder of this plugin. After translation, please [send the localized file](http://aihr.us/contact-aihrus/) for plugin inclusion.
+
+**[How do I localize?](https://aihrus.zendesk.com/entries/23691557)**
+
+= Shortcode and Widget Options =
 
 **General**
 
@@ -41,8 +66,8 @@ The WordPress KEYWORD plugin, WordPress Starter Premium, FREE_DESCRIPTION.
 **Testing**
 
 * Debug Mode - Bypass Ajax controller to handle posts_to_import directly for testing purposes.
-* Posts to Import - A CSV list of post ids to import, like '1,2,3'.
-* Skip Importing Posts - A CSV list of post ids to not import, like '1,2,3'.
+* Posts to Import - A CSV list of post ids to import, like "1,2,3".
+* Skip Importing Posts - A CSV list of post ids to not import, like "1,2,3".
 * Import Limit - Useful for testing import on a limited amount of posts. 0 or blank means unlimited.
 
 **Compatibility & Reset**
@@ -52,35 +77,60 @@ The WordPress KEYWORD plugin, WordPress Starter Premium, FREE_DESCRIPTION.
 * Remove Plugin Data on Deletion? - Delete all WordPress Starter Premium data and options from database on plugin deletion
 * Reset to Defaults? – Check this box to reset options to their defaults
 
-= API =
-
-* Read the [WordPress Starter Premium API](http://wordpress.org/plugins/wordpress-starter-premium/api/).
-
-= Languages =
-
-You can translate this plugin into your own language if it's not done so already. The localization file `wordpress-starter-premium.pot` can be found in the `languages` folder of this plugin. After translation, please [send the localized file](http://aihr.us/contact-aihrus/) to the plugin author.
-
-See the FAQ for further localization tips.
-
-= Support =
-
-Please visit the [WordPress Starter Premium Knowledge Base](https://aihrus.zendesk.com/categories/20102742-WordPress-Starter-Plugin) for frequently asked questions, offering ideas, or getting support.
-
-If you want to contribute and I hope you do, [contact Aihrus](http://aihr.us/contact-aihrus/).
-
 
 == Installation ==
 
-1. Via WordPress Admin > Plugins > Add New, Upload the `wordpress-starter-premium.zip` file
-1. Alternately, unzip `wordpress-starter-premium.zip` the file and then via FTP, upload `wordpress-starter-premium` directory to the `/wp-content/plugins/` directory
-1. Activate the 'WordPress Starter Premium' plugin after uploading or through WP Admin > Plugins
-1. Set the license key via WP Admin > Settings > WordPress Starter, Premium tab, License Key field
-1. License key activation is automatic upon clicking Save Changes.
+= Install Methods =
+
+* Download `wordpress-starter.zip` locally
+	* Through WordPress Admin > Plugins > Add New
+	* Click Upload
+	* "Choose File" `wordpress-starter.zip`
+	* Click "Install Now"
+* Download and unzip `wordpress-starter.zip` locally
+	* Using FTP, upload directory `wordpress-starter` to your website's `/wp-content/plugins/` directory
+
+= Activatation Options =
+
+* Activate the "WordPress Starter Premium" plugin after uploading
+* Activate the "WordPress Starter Premium" plugin through WordPress Admin > Plugins
+
+= License Activatation =
+
+1. Set the license key through WordPress Admin > Settings > WordPress Starter, Premium tab, License Key field
+1. License key activation is automatic upon clicking "Save Changes"
+
+= Usage =
+
+1. TBD
+
+= Upgrading =
+
+* Through WordPress
+	* Via WordPress Admin > Dashboard > Updates, click "Check Again"
+	* Select plugins for update, click "Update Plugins"
+* Using FTP
+	* Download and unzip `wordpress-starter.zip` locally
+	* FTP, upload directory `wordpress-starter` to your website's `/wp-content/plugins/` directory
+	* Be sure to overwrite your existing `wordpress-starter` folder contents
 
 
 == Frequently Asked Questions ==
 
-Please visit the [WordPress Starter Premium Knowledge Base](https://aihrus.zendesk.com/categories/20102742-WordPress-Starter-Plugin) for frequently asked questions, offering ideas, or getting support.
+= Most Common Issues =
+
+* Got `Parse error: syntax error, unexpected T_STATIC, expecting ')'`? Read [Most Aihrus Plugins Require PHP 5.3+](https://aihrus.zendesk.com/entries/30678006) for the fixes.
+* [Debug common theme and plugin conflicts](https://aihrus.zendesk.com/entries/25119302)
+* [Change or debug CSS](https://aihrus.zendesk.com/entries/24910733)
+
+= Still Stuck or Want Something Done? Get Support! =
+
+1. [WordPress Starter Knowledge Base](https://aihrus.zendesk.com/categories/20102742) - read and comment upon frequently asked questions
+1. [Open WordPress Starter Issues](https://github.com/michael-cannon/wordpress-starter/issues) - review and submit bug reports and enhancement requests
+1. [WordPress Starter Support on WordPress](http://wordpress.org/support/plugin/wordpress-starter) - review responses, but do **NOT** ask questions as premium support via WordPress forums is forbidden
+1. E-mail [support@aihr.us](mailto:support@aihr.us?subject=WordPress+Starter+Premium+Suport+Request) for personalized assistance
+1. [Contribute Code to WordPress Starter Premium](https://github.com/michael-cannon/wordpress-starter/blob/master/CONTRIBUTING.md) - [request access](http://aihr.us/contact-aihrus/)
+1. [Beta Testers Needed](http://aihr.us/become-beta-tester/) - get the latest WordPress Starter Premium version
 
 
 == Screenshots ==
@@ -92,26 +142,26 @@ Please visit the [WordPress Starter Premium Knowledge Base](https://aihrus.zende
 
 == Changelog ==
 
-See [CHANGELOG](http://wordpress.org/plugins/wordpress-starter-premium/changelog/)
+See [CHANGELOG](http://aihr.us/wordpress-starter-premium/changelog/)
 
 
 == Upgrade Notice ==
 
-= 0.0.1 =
+= 1.0.0 =
 
 * Initial release
 
 
-== Beta Testers Needed ==
+== Notes ==
 
-I really want WordPress Starter Premium and WordPress Starter Premium to be the best WordPress plugins of their type. However, it's beyond me to do it alone.
+* TBD
 
-I need beta testers to help with ensuring pending releases of WordPress Starter Premium and WordPress Starter Premium are solid. This would benefit us all by helping reduce the number of releases and raise code quality.
 
-[Please contact me directly](http://aihr.us/contact-aihrus/).
+== API ==
 
-Beta testers benefit directly with latest versions, a free unlimited sites license for WordPress Starter Premium, and personalized support assistance.
+* Read the [WordPress Starter Premium API](http://aihr.us/wordpress-starter-premium/api/).
 
-== TODO ==
 
-See [TODO](http://wordpress.org/plugins/wordpress-starter-premium/todo/)
+== Thanks ==
+
+TBD
