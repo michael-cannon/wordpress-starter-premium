@@ -47,12 +47,6 @@ The WordPress KEYWORD plugin, WordPress Starter Premium, TBD.
 
 * TBD
 
-= Localization =
-
-You can translate this plugin into your own language if it's not done so already. The localization file `wordpress-starter.pot` can be found in the `languages` folder of this plugin. After translation, please [send the localized file](http://aihr.us/contact-aihrus/) for plugin inclusion.
-
-**[How do I localize?](https://aihrus.zendesk.com/entries/23691557)**
-
 = Shortcode and Widget Options =
 
 **General**
@@ -162,6 +156,13 @@ See [CHANGELOG](http://aihr.us/wordpress-starter-premium/changelog/)
 * Read the [WordPress Starter Premium API](http://aihr.us/wordpress-starter-premium/api/).
 
 
-== Thanks ==
+== Localization ==
+
+You can translate this plugin into your own language if it's not done so already. The localization file `wordpress-starter.pot` can be found in the `languages` folder of this plugin. After translation, please [send the localized file](http://aihr.us/contact-aihrus/) for plugin inclusion.
+
+**[How do I localize?](https://aihrus.zendesk.com/entries/23691557)**
+
+
+== Thank You ==
 
 TBD
