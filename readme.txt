@@ -20,8 +20,6 @@ http://www.youtube.com/watch?v=TBD
 
 **[Video introduction](http://www.youtube.com/watch?v=TBD)**
 
-**Version 2.16.0+ requires PHP 5.3+** [notice](https://aihrus.zendesk.com/entries/30678006)
-
 The WordPress KEYWORD plugin, WordPress Starter Premium, TBD.
 
 = Primary Premium Features =
@@ -73,6 +71,8 @@ The WordPress KEYWORD plugin, WordPress Starter Premium, TBD.
 
 
 == Installation ==
+
+**WordPress Starter Premium requires PHP 5.3+** [notice](https://aihrus.zendesk.com/entries/30678006)
 
 = Install Methods =
 
