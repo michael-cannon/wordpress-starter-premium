@@ -238,7 +238,7 @@ class WordPress_Starter_Premium extends Aihrus_Common {
 
 	public static function notice_version( $free_base = null, $free_name = null, $free_slug = null, $free_version = null, $item_name = null ) {
 		$free_base    = self::FREE_PLUGIN_BASE;
-	   	$free_name    = 'WordPress Starter';
+	   	$free_name    = 'WordPress Starter by Aihrus';
 		$free_slug    = 'wordpress-starter';
 		$free_version = self::FREE_VERSION;
 		$item_name    = self::ITEM_NAME;

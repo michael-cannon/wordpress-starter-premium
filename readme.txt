@@ -86,6 +86,8 @@ The WordPress KEYWORD plugin, WordPress Starter Premium, TBD.
 
 = Activatation Options =
 
+**Plugin "[WordPress Starter by Aihrus](http://wordpress.org/plugins/wordpress-starter/)" is required to be installed and activated prior to activating "WordPress Starter Premium".**
+
 * Activate the "WordPress Starter Premium" plugin after uploading
 * Activate the "WordPress Starter Premium" plugin through WordPress Admin > Plugins
 
