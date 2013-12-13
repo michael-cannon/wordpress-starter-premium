@@ -34,14 +34,14 @@ define( 'WPSP_REQ_SLUG', 'wordpress-starter' );
 define( 'WPSP_REQ_VERSION', '1.0.0' );
 define( 'WPSP_VERSION', '1.0.0' );
 
-require WPSP_DIR_LIB . '/requirements.php';
+require_once WPSP_DIR_LIB . '/requirements.php';
 
 if ( ! wpsp_requirements_check() ) {
 	return false;
 }
 
-require WPSP_DIR_LIB . '/aihrus/class-aihrus-common.php';
-require WPSP_DIR_LIB . '/class-wordpress-starter-premium-licensing.php';
+require_once WPSP_DIR_LIB . '/aihrus/class-aihrus-common.php';
+require_once WPSP_DIR_LIB . '/class-wordpress-starter-premium-licensing.php';
 
 
 class WordPress_Starter_Premium extends Aihrus_Common {
@@ -135,7 +135,7 @@ class WordPress_Starter_Premium extends Aihrus_Common {
 		if ( ! current_user_can( 'activate_plugins' ) )
 			return;
 		
-		require WPSP_DIR_LIB . '/class-wordpress-starter-premium-licensing.php';
+		require_once WPSP_DIR_LIB . '/class-wordpress-starter-premium-licensing.php';
 
 		$WPSP_Licensing = new WordPress_Starter_Premium_Licensing();
 		$WPSP_Licensing->deactivate_license();
@@ -253,7 +253,7 @@ function wordpress_starter_premium_init() {
 		$WPSP_Licensing = new WordPress_Starter_Premium_Licensing();
 
 	if ( ! class_exists( 'EDD_SL_Plugin_Updater' ) )
-		require WPSP_DIR_LIB . '/EDD_SL_Plugin_Updater.php';
+		require_once WPSP_DIR_LIB . '/EDD_SL_Plugin_Updater.php';
 
 	$WPSP_Updater = new EDD_SL_Plugin_Updater(
 		$WPSP_Licensing->store_url,
