@@ -16,12 +16,15 @@
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-require_once WPSP_PLUGIN_DIR_LIB . '/aihrus/class-aihrus-licensing.php';
+if ( class_exists( 'WordPress_Starter_Premium_Licensing' ) )
+	return;
+
+require_once WPSP_DIR_LIB . '/aihrus/class-aihrus-licensing.php';
 
 
 class WordPress_Starter_Premium_Licensing extends Aihrus_Licensing{
 	public function __construct() {
-		parent::__construct( WordPress_Starter_Premium::SLUG, WordPress_Starter_Premium::ITEM_NAME );
+		parent::__construct( WordPress_Starter_Premium::SLUG, WPSP_NAME );
 
 		add_filter( 'wps_settings', array( $this, 'settings' ), 5 );
 	}
@@ -33,7 +36,7 @@ class WordPress_Starter_Premium_Licensing extends Aihrus_Licensing{
 		$settings[ WordPress_Starter_Premium::SLUG . 'license_key' ] = array(
 			'section' => 'premium',
 			'title' => esc_html__( 'License Key' ),
-			'title' => sprintf( $title, WordPress_Starter_Premium::ITEM_NAME ),
+			'title' => sprintf( $title, WPSP_NAME ),
 			'desc' => esc_html__( 'Required to enable premium plugin updating. Activation is automatic. Use `0` to deactivate.' ),
 			'validate' => 'wpsp_update_license',
 			'widget' => 0,

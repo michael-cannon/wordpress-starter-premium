@@ -80,7 +80,6 @@ class WordPress_Starter_Premium extends Aihrus_Common {
 		global $WPSP_Licensing;
 		if ( ! $WPSP_Licensing->valid_license() ) {
 			self::set_notice( 'notice_license', DAY_IN_SECONDS );
-			self::set_notice( 'notice_license' ); //fixme
 			self::check_notices();
 		}
 
@@ -252,7 +251,7 @@ function wordpress_starter_premium_init() {
 		$WPSP_Licensing = new WordPress_Starter_Premium_Licensing();
 
 	if ( ! class_exists( 'EDD_SL_Plugin_Updater' ) )
-		require WPSP_PLUGIN_DIR_LIB . '/EDD_SL_Plugin_Updater.php';
+		require WPSP_DIR_LIB . '/EDD_SL_Plugin_Updater.php';
 
 	$WPSP_Updater = new EDD_SL_Plugin_Updater(
 		$WPSP_Licensing->store_url,
