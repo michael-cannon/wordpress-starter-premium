@@ -134,6 +134,8 @@ class WordPress_Starter_Premium extends Aihrus_Common {
 	public static function uninstall() {
 		if ( ! current_user_can( 'activate_plugins' ) )
 			return;
+		
+		require WPSP_DIR_LIB . '/class-wordpress-starter-premium-licensing.php';
 
 		$WPSP_Licensing = new WordPress_Starter_Premium_Licensing();
 		$WPSP_Licensing->deactivate_license();
