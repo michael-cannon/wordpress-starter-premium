@@ -17,9 +17,13 @@
 * Check for PHP 5.3
 * Correct premium prep defaults
 * Enable licensing 
+* Implement PHP version checking
+* Implement WordPress version checking
 * Include CSS in plugin prepartions
 * Make scripts/styles consistent
+* Readme installation
 * Revise headers
 * Revise readme structure
 * Separate license key entries
+* Tested up to 3.9.0
 * Update `version_check` for free requirements

@@ -4,7 +4,7 @@ Contributors: comprock
 Donate link: http://aihr.us/about-aihrus/donate/
 Tags: t, b, d
 Requires at least: 3.6
-Tested up to: 3.8.0
+Tested up to: 3.9.0
 Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -72,7 +72,10 @@ The WordPress KEYWORD plugin, WordPress Starter Premium, TBD.
 
 == Installation ==
 
-**WordPress Starter Premium requires PHP 5.3+** [notice](https://aihrus.zendesk.com/entries/30678006)
+= Requirements =
+
+* PHP 5.3+ [Read notice](https://aihrus.zendesk.com/entries/30678006)
+* Plugin "[WordPress Starter by Aihrus](http://wordpress.org/plugins/wordpress-starter/)" is required to be installed and activated prior to activating "WordPress Starter Premium".
 
 = Install Methods =
 
@@ -84,9 +87,7 @@ The WordPress KEYWORD plugin, WordPress Starter Premium, TBD.
 * Download and unzip `wordpress-starter.zip` locally
 	* Using FTP, upload directory `wordpress-starter` to your website's `/wp-content/plugins/` directory
 
-= Activatation Options =
-
-**Plugin "[WordPress Starter by Aihrus](http://wordpress.org/plugins/wordpress-starter/)" is required to be installed and activated prior to activating "WordPress Starter Premium".**
+= Activation Options =
 
 * Activate the "WordPress Starter Premium" plugin after uploading
 * Activate the "WordPress Starter Premium" plugin through WordPress Admin > Plugins
@@ -124,7 +125,7 @@ The WordPress KEYWORD plugin, WordPress Starter Premium, TBD.
 1. [WordPress Starter Knowledge Base](https://aihrus.zendesk.com/categories/20102742) - read and comment upon frequently asked questions
 1. [Open WordPress Starter Issues](https://github.com/michael-cannon/wordpress-starter/issues) - review and submit bug reports and enhancement requests
 1. [WordPress Starter Support on WordPress](http://wordpress.org/support/plugin/wordpress-starter) - review responses, but do **NOT** ask questions as premium support via WordPress forums is forbidden
-1. E-mail [support@aihr.us](mailto:support@aihr.us?subject=WordPress+Starter+Premium+Suport+Request) for personalized assistance
+1. E-mail [support@aihr.us](mailto:support@aihr.us?subject=WordPress+Starter+Premium+Support+Request) for personalized assistance
 1. [Contribute Code to WordPress Starter Premium](https://github.com/michael-cannon/wordpress-starter/blob/master/CONTRIBUTING.md) - [request access](http://aihr.us/contact-aihrus/)
 1. [Beta Testers Needed](http://aihr.us/become-beta-tester/) - get the latest WordPress Starter Premium version
 
