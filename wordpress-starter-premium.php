@@ -24,6 +24,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
+define( 'WPSP_AIHR_VERSION', '1.0.0' );
 define( 'WPSP_BASE', plugin_basename( __FILE__ ) );
 define( 'WPSP_DIR', plugin_dir_path( __FILE__ ) );
 define( 'WPSP_DIR_LIB', WPSP_DIR . '/lib' );
@@ -181,7 +182,7 @@ class WordPress_Starter_Premium extends Aihrus_Common {
 
 		if ( ! $valid_base ) {
 			$valid_version = false;
-			self::set_notice( 'cbqep_notice_version' );
+			self::set_notice( 'wpsp_notice_version' );
 		}
 
 		if ( ! $valid_version ) {

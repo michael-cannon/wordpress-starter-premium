@@ -27,3 +27,4 @@
 * Separate license key entries
 * Tested up to 3.9.0
 * Update `version_check` for free requirements
+* Use aihr_check_aihrus_framework
