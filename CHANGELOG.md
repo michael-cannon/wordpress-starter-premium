@@ -14,6 +14,7 @@
 * Add licensing texts
 * Add missing `notice_version`
 * Add plugin init load action `wpsp_init`
+* BUGFIX Inactive REQ_BASE due to old Aihrus Framework
 * Check for PHP 5.3
 * Correct premium prep defaults
 * Enable licensing 

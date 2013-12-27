@@ -174,7 +174,9 @@ class WordPress_Starter_Premium extends Aihrus_Common {
 		$valid_version = true;
 
 		$valid_base = true;
-		if ( ! defined( 'WPS_VERSION' ) ) {
+		if ( ! is_plugin_active( WPSP_REQ_BASE ) ) {
+			$valid_base = false;
+		} elseif ( ! defined( 'WPS_VERSION' ) ) {
 			$valid_base = false;
 		} elseif ( ! version_compare( WPS_VERSION, WPSP_REQ_VERSION, '>=' ) ) {
 			$valid_base = false;
