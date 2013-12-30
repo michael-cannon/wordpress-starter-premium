@@ -24,7 +24,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
-define( 'WPSP_AIHR_VERSION', '1.0.0' );
+define( 'WPSP_AIHR_VERSION', '1.0.1' );
 define( 'WPSP_BASE', plugin_basename( __FILE__ ) );
 define( 'WPSP_DIR', plugin_dir_path( __FILE__ ) );
 define( 'WPSP_DIR_LIB', WPSP_DIR . '/lib' );
@@ -80,8 +80,16 @@ class WordPress_Starter_Premium extends Aihrus_Common {
 
 		global $WPSP_Licensing;
 		if ( ! $WPSP_Licensing->valid_license() ) {
-			self::set_notice( 'notice_license', DAY_IN_SECONDS );
-			self::check_notices();
+			$need_license = true;
+			$license_key  = wps_get_option( $WPSP_Licensing->license_key() );
+			if ( $WPSP_Licensing->valid_hash( $license_key ) ) {
+				$success = wpsp_update_license( $license_key );
+				if ( $WPSP_Licensing->valid_hash( $success ) )
+					$need_license = false;
+			}
+
+			if ( $need_license )
+				self::set_notice( 'notice_license', DAY_IN_SECONDS );
 		}
 
 		add_filter( 'plugin_action_links', array( __CLASS__, 'plugin_action_links' ), 10, 2 );

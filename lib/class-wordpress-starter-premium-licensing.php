@@ -58,7 +58,7 @@ function wpsp_update_license( $license ) {
 	global $WPSP_Licensing;
 
 	$result = $WPSP_Licensing->update_license( $license );
-	if ( 32 !== strlen( $result ) )
+	if ( ! $WPSP_Licensing->valid_hash( $result ) ) {
 		WordPress_Starter_Premium::set_notice( 'notice_license' );
 
 	return $result;

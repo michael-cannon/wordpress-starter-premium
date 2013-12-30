@@ -8,12 +8,12 @@
 
 ## 0.0.0
 * $this to __CLASS__
-* Add WPS_PLUGIN_DIR path
-* Add [[gallery]]
-* Add `do_load` 
 * Add licensing texts
 * Add missing `notice_version`
 * Add plugin init load action `wpsp_init`
+* Add WPS_PLUGIN_DIR path
+* Add [[gallery]]
+* Add `do_load` 
 * BUGFIX Inactive REQ_BASE due to old Aihrus Framework
 * Check for PHP 5.3
 * Correct premium prep defaults
@@ -25,6 +25,7 @@
 * Readme installation
 * Revise headers
 * Revise readme structure
+* Revise weekly license checking
 * Separate license key entries
 * Tested up to 3.9.0
 * Update `version_check` for free requirements
