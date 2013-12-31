@@ -16,10 +16,10 @@
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+require_once WPSP_DIR_LIB . '/aihrus/class-aihrus-licensing.php';
+
 if ( class_exists( 'WordPress_Starter_Premium_Licensing' ) )
 	return;
-
-require_once WPSP_DIR_LIB . '/aihrus/class-aihrus-licensing.php';
 
 
 class WordPress_Starter_Premium_Licensing extends Aihrus_Licensing{
