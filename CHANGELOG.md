@@ -21,6 +21,7 @@
 * Implement WordPress version checking
 * Include CSS in plugin prepartions
 * Make scripts/styles consistent
+* Move ci to tests
 * Move files to assets and includes
 * Readme installation
 * Revise headers
