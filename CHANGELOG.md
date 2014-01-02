@@ -27,6 +27,7 @@
 * Revise readme structure
 * Revise weekly license checking
 * Separate license key entries
+* Specify a “Text Domain” and “Domain Path”
 * Tested up to 3.9.0
 * Update `version_check` for free requirements
 * Use aihr_check_aihrus_framework
