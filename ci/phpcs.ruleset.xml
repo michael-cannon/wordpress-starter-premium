@@ -1,12 +1,11 @@
 <?xml version="1.0"?>
 <ruleset name="Aihrus">
 	<description>
-		Custom phpcs rules to check for Aihrus' WordPress projects
+		Custom PHPCS rules to check for Aihrus' WordPress projects
 	</description>
 
 	<exclude-pattern>ci/</exclude-pattern>
-	<exclude-pattern>lib/aihrus/</exclude-pattern>
-	<exclude-pattern>lib/EDD_SL_Plugin_Updater.php</exclude-pattern>
+	<exclude-pattern>includes/libraries/</exclude-pattern>
 
 	<rule ref="Generic">
 		<exclude name="Generic.CodeAnalysis.UnusedFunctionParameter.Found" />

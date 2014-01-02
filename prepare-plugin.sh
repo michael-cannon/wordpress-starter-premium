@@ -3,24 +3,24 @@
 NEW_ABBR="CBQEP_"
 NEW_BASE="custom-bulk-quick-edit-premium"
 NEW_CLASS="Custom_Bulk_Quick_Edit_Premium"
+NEW_FILTER="${NEW_ABBR,,}"
 NEW_KB_PATH="20112546"
-NEW_SITE=""
-NEW_SLUG="cbqep_"
-NEW_SLUG_LONG="custom_bulk_quick_edit_premium"
+NEW_SITE="http://aihr.us/products/${NEW_BASE}/"
+NEW_SLUG="${NEW_FILTER}"
+NEW_SLUG_LONG="${NEW_BASE/-/_}"
 NEW_TITLE="Custom Bulk/Quick Edit Premium"
-NEW_TITLE_SHORT="Custom Bulk/Quick Edit"
-NEW_FILTER="${NEW_SLUG}"
+NEW_TITLE_SHORT="${NEW_TITLE/ Premium/}"
 
 OLD_ABBR="WPSP_"
 OLD_BASE="wordpress-starter-premium"
 OLD_CLASS="WordPress_Starter_Premium"
+OLD_FILTER="${OLD_ABBR,,}"
 OLD_KB_PATH="20102742"
-OLD_SITE="http://wordpress.org/plugins/wordpress-starter-premium/"
-OLD_SLUG="wpsp_"
-OLD_SLUG_LONG="wordpress_starter_premium"
+OLD_SITE="http://wordpress.org/plugins/${OLD_BASE}/"
+OLD_SLUG="${OLD_FILTER}"
+OLD_SLUG_LONG="${OLD_BASE/-/_}"
 OLD_TITLE="WordPress Starter Premium"
-OLD_TITLE_SHORT="WordPress Starter"
-OLD_FILTER="${OLD_SLUG}"
+OLD_TITLE_SHORT="${OLD_TITLE/ Premium/}"
 
 echo
 echo "Begin converting ${OLD_TITLE} to ${NEW_TITLE} plugin"
@@ -96,9 +96,10 @@ then
 	rm -rf .git
 fi
 
-if [[ -e lib/aihrus ]]
+LIB_AIHRUS="includes/libraries/aihrus"
+if [[ -e ${LIB_AIHRUS} ]]
 then
-	rm lib/aihrus
+	rm ${LIB_AIHRUS}
 fi
 
 git init

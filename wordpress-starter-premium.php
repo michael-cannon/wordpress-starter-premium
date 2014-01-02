@@ -29,7 +29,8 @@
 define( 'WPSP_AIHR_VERSION', '1.0.1' );
 define( 'WPSP_BASE', plugin_basename( __FILE__ ) );
 define( 'WPSP_DIR', plugin_dir_path( __FILE__ ) );
-define( 'WPSP_DIR_LIB', WPSP_DIR . '/lib' );
+define( 'WPSP_DIR_INC', WPSP_DIR . '/includes' );
+define( 'WPSP_DIR_LIB', WPSP_DIR_INC . '/libraries' );
 define( 'WPSP_NAME', 'WordPress Starter Premium' );
 define( 'WPSP_REQ_BASE', 'wordpress-starter/wordpress-starter.php' );
 define( 'WPSP_REQ_NAME', 'WordPress Starter by Aihrus' );
@@ -37,14 +38,14 @@ define( 'WPSP_REQ_SLUG', 'wordpress-starter' );
 define( 'WPSP_REQ_VERSION', '1.0.0' );
 define( 'WPSP_VERSION', '1.0.0' );
 
-require_once WPSP_DIR_LIB . '/requirements.php';
+require_once WPSP_DIR_INC . '/requirements.php';
 
 if ( ! wpsp_requirements_check() ) {
 	return false;
 }
 
-require_once WPSP_DIR_LIB . '/aihrus/class-aihrus-common.php';
-require_once WPSP_DIR_LIB . '/class-wordpress-starter-premium-licensing.php';
+require_once WPSP_DIR_LIB . '/aihrus-framework/class-aihrus-common.php';
+require_once WPSP_DIR_INC . '/class-wordpress-starter-premium-licensing.php';
 
 
 class WordPress_Starter_Premium extends Aihrus_Common {
@@ -146,7 +147,7 @@ class WordPress_Starter_Premium extends Aihrus_Common {
 		if ( ! current_user_can( 'activate_plugins' ) )
 			return;
 		
-		require_once WPSP_DIR_LIB . '/class-wordpress-starter-premium-licensing.php';
+		require_once WPSP_DIR_INC . '/class-wordpress-starter-premium-licensing.php';
 
 		$WPSP_Licensing = new WordPress_Starter_Premium_Licensing();
 		$WPSP_Licensing->deactivate_license();
