@@ -7,12 +7,13 @@
 
 ## 0.0.0
 * $this to __CLASS__
-* Add WPS_PLUGIN_DIR path
-* Add [[gallery]]
-* Add `do_load` 
+* Add Codeship.io configuration
 * Add licensing texts
 * Add missing `notice_version`
 * Add plugin init load action `wpsp_init`
+* Add WPS_PLUGIN_DIR path
+* Add [[gallery]]
+* Add `do_load` 
 * BUGFIX Inactive REQ_BASE due to old Aihrus Framework
 * Check for PHP 5.3
 * Correct premium prep defaults
@@ -21,11 +22,11 @@
 * Implement WordPress version checking
 * Include CSS in plugin prepartions
 * Make scripts/styles consistent
-* Move CSS to assets
 * Move ci to tests
+* Move CSS to assets
 * Move files to assets and includes
-* RESOLVE Non-SSL protocol used for scripts and styles
 * Readme installation
+* RESOLVE Non-SSL protocol used for scripts and styles
 * Revise headers
 * Revise readme structure
 * Revise required file paths
