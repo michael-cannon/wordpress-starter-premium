@@ -27,6 +27,7 @@
 * Move files to assets and includes
 * No longer require standalone free plugin activation
 * Readme installation
+* Remove unused CONSTANTS
 * RESOLVE Non-SSL protocol used for scripts and styles
 * Revise headers
 * Revise readme structure

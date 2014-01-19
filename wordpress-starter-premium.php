@@ -26,7 +26,6 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
-define( 'WPSP_AIHR_VERSION', '1.0.1' );
 define( 'WPSP_BASE', plugin_basename( __FILE__ ) );
 define( 'WPSP_DIR', plugin_dir_path( __FILE__ ) );
 define( 'WPSP_DIR_INC', WPSP_DIR . 'includes/' );
@@ -34,8 +33,6 @@ define( 'WPSP_DIR_LIB', WPSP_DIR_INC . 'libraries/' );
 define( 'WPSP_NAME', 'WordPress Starter Premium' );
 define( 'WPSP_REQ_BASE', 'wordpress-starter/wordpress-starter.php' );
 define( 'WPSP_REQ_NAME', 'WordPress Starter by Aihrus' );
-define( 'WPSP_REQ_SLUG', 'wordpress-starter' );
-define( 'WPSP_REQ_VERSION', '1.0.0' );
 define( 'WPSP_VERSION', '1.0.0' );
 
 require_once WPSP_DIR_LIB . WPSP_REQ_BASE;

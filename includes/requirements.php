@@ -21,13 +21,6 @@ require_once WPSP_DIR_LIB . 'aihrus-framework/requirements.php';
 
 function wpsp_requirements_check() {
 	$valid_requirements = true;
-	if ( ! function_exists( 'aihr_check_aihrus_framework' ) ) {
-		$valid_requirements = false;
-		add_action( 'admin_notices', 'wpsp_notice_aihrus' );
-	} elseif ( ! aihr_check_aihrus_framework( WPSP_BASE, WPSP_NAME, WPSP_AIHR_VERSION ) ) {
-		$valid_requirements = false;
-	}
-
 	if ( ! aihr_check_php( WPSP_BASE, WPSP_NAME ) ) {
 		$valid_requirements = false;
 	}
@@ -38,7 +31,7 @@ function wpsp_requirements_check() {
 
 	if ( is_plugin_active( WPSP_REQ_BASE ) ) {
 		deactivate_plugins( WPSP_REQ_BASE );
-		add_action( 'admin_notices', 'wpsp_notice_wps_deactivate' );
+		add_action( 'admin_notices', 'wpsp_notice_wps_deactivated' );
 	}
 
 	if ( ! $valid_requirements ) {
@@ -46,11 +39,6 @@ function wpsp_requirements_check() {
 	}
 
 	return $valid_requirements;
-}
-
-
-function wpsp_notice_version() {
-	aihr_notice_version( WPSP_REQ_BASE, WPSP_REQ_NAME, WPSP_REQ_SLUG, WPSP_REQ_VERSION, WPSP_NAME );
 }
 
 
@@ -64,7 +52,7 @@ function wpsp_notice_aihrus() {
 }
 
 
-function wpsp_notice_wps_deactivate() {
+function wpsp_notice_wps_deactivated() {
 	$text = sprintf( esc_html__( 'Plugin "%1$s" has been deactivated as it no longer required by "%2$s".' ), WPSP_REQ_NAME, WPSP_NAME );
 
 	aihr_notice_error( $text );
