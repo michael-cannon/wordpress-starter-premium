@@ -38,6 +38,7 @@ define( 'WPSP_REQ_SLUG', 'wordpress-starter' );
 define( 'WPSP_REQ_VERSION', '1.0.0' );
 define( 'WPSP_VERSION', '1.0.0' );
 
+require_once WPSP_DIR_LIB . WPSP_REQ_BASE;
 require_once WPSP_DIR_INC . 'requirements.php';
 
 if ( ! wpsp_requirements_check() ) {

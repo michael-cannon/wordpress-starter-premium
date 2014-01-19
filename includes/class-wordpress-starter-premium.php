@@ -13,7 +13,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
-require_once WPSP_DIR_LIB . 'aihrus-framework/class-aihrus-common.php';
+require_once WPS_DIR_LIB . 'aihrus-framework/class-aihrus-common.php';
 require_once WPSP_DIR_INC . 'class-wordpress-starter-premium-licensing.php';
 
 if ( class_exists( 'WordPress_Starter_Premium' ) )
@@ -159,20 +159,6 @@ class WordPress_Starter_Premium extends Aihrus_Common {
 
 	public static function version_check() {
 		$valid_version = true;
-
-		$valid_base = true;
-		if ( ! is_plugin_active( WPSP_REQ_BASE ) ) {
-			$valid_base = false;
-		} elseif ( ! defined( 'WPS_VERSION' ) ) {
-			$valid_base = false;
-		} elseif ( ! version_compare( WPS_VERSION, WPSP_REQ_VERSION, '>=' ) ) {
-			$valid_base = false;
-		}
-
-		if ( ! $valid_base ) {
-			$valid_version = false;
-			self::set_notice( 'wpsp_notice_version' );
-		}
 
 		if ( ! $valid_version ) {
 			deactivate_plugins( self::BASE );

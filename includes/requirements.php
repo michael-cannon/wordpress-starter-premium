@@ -36,9 +36,9 @@ function wpsp_requirements_check() {
 		$valid_requirements = false;
 	}
 
-	if ( ! is_plugin_active( WPSP_REQ_BASE ) ) {
-		$valid_requirements = false;
-		add_action( 'admin_notices', 'wpsp_notice_version' );
+	if ( is_plugin_active( WPSP_REQ_BASE ) ) {
+		deactivate_plugins( WPSP_REQ_BASE );
+		add_action( 'admin_notices', 'wpsp_notice_wps_deactivate' );
 	}
 
 	if ( ! $valid_requirements ) {
@@ -59,6 +59,13 @@ function wpsp_notice_aihrus() {
 	$help_link = sprintf( __( '<a href="%1$s">Update plugins</a>. <a href="%2$s">More information</a>.' ), self_admin_url( 'update-core.php' ), $help_url );
 
 	$text = sprintf( esc_html__( 'Plugin "%1$s" has been deactivated as it requires a current Aihrus Framework. Once corrected, "%1$s" can be activated. %2$s' ), WPSP_NAME, $help_link );
+
+	aihr_notice_error( $text );
+}
+
+
+function wpsp_notice_wps_deactivate() {
+	$text = sprintf( esc_html__( 'Plugin "%1$s" has been deactivated as it no longer required by "%2$s".' ), WPSP_REQ_NAME, WPSP_NAME );
 
 	aihr_notice_error( $text );
 }
