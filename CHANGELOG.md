@@ -15,6 +15,7 @@
 * Add [[gallery]]
 * Add `do_load` 
 * BUGFIX Inactive REQ_BASE due to old Aihrus Framework
+* Check for active base plugin
 * Check for PHP 5.3
 * Correct premium prep defaults
 * Enable licensing 

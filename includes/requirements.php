@@ -34,6 +34,12 @@ function wpsp_requirements_check() {
 		add_action( 'admin_notices', 'wpsp_notice_wps_deactivated' );
 	}
 
+	global $wps_activated;
+
+	if ( empty( $wps_activated ) ) {
+		$valid_requirements = false;
+	}
+
 	if ( ! $valid_requirements ) {
 		deactivate_plugins( WPSP_BASE );
 	}
