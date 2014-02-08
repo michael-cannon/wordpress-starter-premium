@@ -1,5 +1,7 @@
 # WordPress Starter Premium plugin for WordPress
 
+[![Codeship status](https://www.codeship.io/projects/TBD/status)](https://www.codeship.io/projects/TBD)
+
 ## Welcome to the WordPress Starter Premium Github repository
 
 WordPress Starter Premium plugin allows you to add custom fields to the edit screen bulk and quick edit panels.
