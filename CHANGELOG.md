@@ -27,6 +27,7 @@
 * Move CSS to assets
 * Move files to assets and includes
 * No longer require standalone free plugin activation
+* Put YouTube to https
 * Readme installation
 * Remove unused CONSTANTS
 * RESOLVE Non-SSL protocol used for scripts and styles

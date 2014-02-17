@@ -16,9 +16,9 @@ TBD
 
 WordPress Starter Premium adds onto the best WordPress KEYWORD plugin there is, [WordPress Starter Premium](http://aihr.us/wordpress-starter-premium/). WordPress Starter Premium offers [PREMIUM_FEATURES](http://aihr.us/products/wordpress-starter-premium/). Additionally, SECONDARY_FEATURES.
 
-http://www.youtube.com/watch?v=TBD
+https://www.youtube.com/watch?v=TBD
 
-**[Video introduction](http://www.youtube.com/watch?v=TBD)**
+**[Video introduction](https://www.youtube.com/watch?v=TBD)**
 
 The WordPress KEYWORD plugin, WordPress Starter Premium, TBD.
 
