@@ -26,6 +26,10 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) )
+	exit;
+
 define( 'WPSP_BASE', plugin_basename( __FILE__ ) );
 define( 'WPSP_DIR', plugin_dir_path( __FILE__ ) );
 define( 'WPSP_DIR_INC', WPSP_DIR . 'includes/' );
