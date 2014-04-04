@@ -1,6 +1,6 @@
 <?php
 /*
-	Copyright 2013 Michael Cannon (email: mc@aihr.us)
+	Copyright 2014 Michael Cannon (email: mc@aihr.us)
 
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License, version 2, as
@@ -16,7 +16,7 @@
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-require_once WPS_DIR_LIB . 'aihrus-framework/class-aihrus-licensing.php';
+require_once AIHR_DIR_INC . 'class-aihrus-licensing.php';
 
 if ( class_exists( 'WordPress_Starter_Premium_Licensing' ) )
 	return;

@@ -1,6 +1,6 @@
 <?php
 /*
-	Copyright 2013 Michael Cannon (email: mc@aihr.us)
+	Copyright 2014 Michael Cannon (email: mc@aihr.us)
 
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License, version 2, as
@@ -16,35 +16,44 @@
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-require_once WPSP_DIR_LIB . 'aihrus-framework/requirements.php';
+require_once AIHR_DIR . 'aihrus-framework.php';
 
 
-function wpsp_requirements_check() {
-	$valid_requirements = true;
+function wpsp_requirements_check( $force_check = false ) {
+	if ( is_plugin_active( WPSP_REQ_BASE ) ) {
+		aihr_deactivate_plugin( WPSP_REQ_BASE );
+		add_action( 'admin_notices', 'wpsp_notice_wps_deactivated' );
+	}
+
+	$check_okay = get_transient( 'wpsp_requirements_check' );
+	if ( empty( $force_check ) && $check_okay !== false ) {
+		return $check_okay;
+	}
+
+	$deactivate_reason = false;
 	if ( ! aihr_check_php( WPSP_BASE, WPSP_NAME ) ) {
-		$valid_requirements = false;
+		$deactivate_reason = esc_html__( 'Old PHP version detected' );
 	}
 
 	if ( ! aihr_check_wp( WPSP_BASE, WPSP_NAME ) ) {
-		$valid_requirements = false;
-	}
-
-	if ( is_plugin_active( WPSP_REQ_BASE ) ) {
-		deactivate_plugins( WPSP_REQ_BASE );
-		add_action( 'admin_notices', 'wpsp_notice_wps_deactivated' );
+		$deactivate_reason = esc_html__( 'Old WordPress version detected' );
 	}
 
 	global $wps_activated;
 
 	if ( empty( $wps_activated ) ) {
-		$valid_requirements = false;
+		$deactivate_reason = esc_html__( 'Internal WordPress Starter not detected' );
 	}
 
-	if ( ! $valid_requirements ) {
-		deactivate_plugins( WPSP_BASE );
+	if ( ! empty( $deactivate_reason ) ) {
+		aihr_deactivate_plugin( WPSP_BASE, WPSP_NAME, $deactivate_reason );
 	}
+	
+	$check_okay = empty( $deactivate_reason );
+	delete_transient( 'wpsp_requirements_check' );
+	set_transient( 'wpsp_requirements_check', $check_okay, WEEK_IN_SECONDS );
 
-	return $valid_requirements;
+	return $check_okay;
 }
 
 

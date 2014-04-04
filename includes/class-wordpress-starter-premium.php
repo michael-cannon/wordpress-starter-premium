@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright 2013 Michael Cannon (email: mc@aihr.us)
+ * Copyright 2014 Michael Cannon (email: mc@aihr.us)
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License, version 2, as
  * published by the Free Software Foundation.
@@ -161,7 +161,8 @@ class WordPress_Starter_Premium extends Aihrus_Common {
 		$valid_version = true;
 
 		if ( ! $valid_version ) {
-			deactivate_plugins( self::BASE );
+			$deactivate_reason = esc_html__( 'Failed version check' );
+			aihr_deactivate_plugin( self::BASE, WPSP_NAME, $deactivate_reason );
 			self::check_notices();
 		}
 
