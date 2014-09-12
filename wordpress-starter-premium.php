@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: WordPress Starter Premium
+ * Plugin Name: Aihrus WordPress Starter Premium
  * Plugin URI: http://aihr.us/products/wordpress-starter-premium/
  * Description: TBD
  * Version: 1.0.0
@@ -13,17 +13,22 @@
 
 
 /**
- * Copyright 2014 Michael Cannon (email: mc@aihr.us)
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License, version 2, as
- * published by the Free Software Foundation.
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+Aihrus WordPress Starter Premium
+Copyright (C) 2014  Michael Cannon
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along
+with this program; if not, write to the Free Software Foundation, Inc.,
+51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
 // Exit if accessed directly
@@ -34,9 +39,9 @@ define( 'WPSP_BASE', plugin_basename( __FILE__ ) );
 define( 'WPSP_DIR', plugin_dir_path( __FILE__ ) );
 define( 'WPSP_DIR_INC', WPSP_DIR . 'includes/' );
 define( 'WPSP_DIR_LIB', WPSP_DIR_INC . 'libraries/' );
-define( 'WPSP_NAME', 'WordPress Starter Premium' );
+define( 'WPSP_NAME', 'Aihrus WordPress Starter Premium' );
 define( 'WPSP_REQ_BASE', 'wordpress-starter/wordpress-starter.php' );
-define( 'WPSP_REQ_NAME', 'WordPress Starter by Aihrus' );
+define( 'WPSP_REQ_NAME', 'Aihrus WordPress Starter' );
 define( 'WPSP_VERSION', '1.0.0' );
 
 require_once WPSP_DIR_LIB . WPSP_REQ_BASE;

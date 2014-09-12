@@ -1,4 +1,4 @@
-=== WordPress Starter Premium ===
+=== Aihrus WordPress Starter Premium ===
 
 Contributors: comprock
 Donate link: http://aihr.us/about-aihrus/donate/
@@ -14,13 +14,13 @@ TBD
 
 == Description ==
 
-WordPress Starter Premium adds onto the best WordPress KEYWORD plugin there is, [WordPress Starter Premium](http://aihr.us/wordpress-starter-premium/). WordPress Starter Premium offers [PREMIUM_FEATURES](http://aihr.us/products/wordpress-starter-premium/). Additionally, SECONDARY_FEATURES.
+Aihrus WordPress Starter Premium adds onto the best WordPress KEYWORD plugin there is, [Aihrus WordPress Starter Premium](http://aihr.us/wordpress-starter-premium/). Aihrus WordPress Starter Premium offers [PREMIUM_FEATURES](http://aihr.us/products/wordpress-starter-premium/). Additionally, SECONDARY_FEATURES.
 
 https://www.youtube.com/watch?v=TBD
 
 **[Video introduction](https://www.youtube.com/watch?v=TBD)**
 
-The WordPress KEYWORD plugin, WordPress Starter Premium, TBD.
+The WordPress KEYWORD plugin, Aihrus WordPress Starter Premium, TBD.
 
 = Primary Premium Features =
 
@@ -66,7 +66,7 @@ The WordPress KEYWORD plugin, WordPress Starter Premium, TBD.
 
 * Export Settings – These are your current settings in a serialized format. Copy the contents to make a backup of your settings.
 * Import Settings – Paste new serialized settings here to overwrite your current configuration.
-* Remove Plugin Data on Deletion? - Delete all WordPress Starter Premium data and options from database on plugin deletion
+* Remove Plugin Data on Deletion? - Delete all Aihrus WordPress Starter Premium data and options from database on plugin deletion
 * Reset to Defaults? – Check this box to reset options to their defaults
 
 
@@ -75,7 +75,7 @@ The WordPress KEYWORD plugin, WordPress Starter Premium, TBD.
 = Requirements =
 
 * PHP 5.3+ [Read notice](https://aihrus.zendesk.com/entries/30678006)
-* Plugin "[WordPress Starter by Aihrus](http://wordpress.org/plugins/wordpress-starter/)" is required to be installed and activated prior to activating "WordPress Starter Premium".
+* Plugin "[Aihrus WordPress Starter](http://wordpress.org/plugins/wordpress-starter/)" is required to be installed and activated prior to activating "Aihrus WordPress Starter Premium".
 
 = Install Methods =
 
@@ -89,12 +89,11 @@ The WordPress KEYWORD plugin, WordPress Starter Premium, TBD.
 
 = Activation Options =
 
-* Activate the "WordPress Starter Premium" plugin after uploading
-* Activate the "WordPress Starter Premium" plugin through WordPress Admin > Plugins
+* Activate the "Aihrus WordPress Starter Premium" plugin after uploading through WordPress Admin > Plugins
 
-= License Activatation =
+= License Activation =
 
-1. Set the license key through WordPress Admin > Settings > WordPress Starter, Premium tab, License Key field
+1. Set the license key through WordPress Admin > Settings > Aihrus WordPress Starter, Premium tab, License Key field
 1. License key activation is automatic upon clicking "Save Changes"
 
 = Usage =
@@ -122,12 +121,12 @@ The WordPress KEYWORD plugin, WordPress Starter Premium, TBD.
 
 = Still Stuck or Want Something Done? Get Support! =
 
-1. [WordPress Starter Knowledge Base](https://aihrus.zendesk.com/categories/20102742) - read and comment upon frequently asked questions
-1. [Open WordPress Starter Issues](https://github.com/michael-cannon/wordpress-starter/issues) - review and submit bug reports and enhancement requests
-1. [WordPress Starter Support on WordPress](http://wordpress.org/support/plugin/wordpress-starter) - review responses, but do **NOT** ask questions as premium support via WordPress forums is forbidden
+1. [Aihrus WordPress Starter Knowledge Base](https://aihrus.zendesk.com/categories/20102742) - read and comment upon frequently asked questions
+1. [Open Aihrus WordPress Starter Issues](https://github.com/michael-cannon/wordpress-starter/issues) - review and submit bug reports and enhancement requests
+1. [Aihrus WordPress Starter Support on WordPress](http://wordpress.org/support/plugin/wordpress-starter) - review responses, but do **NOT** ask questions as premium support via WordPress forums is forbidden
 1. E-mail [support@aihr.us](mailto:support@aihr.us?subject=WordPress+Starter+Premium+Support+Request) for personalized assistance
-1. [Contribute Code to WordPress Starter Premium](https://github.com/michael-cannon/wordpress-starter/blob/master/CONTRIBUTING.md) - [request access](http://aihr.us/contact-aihrus/)
-1. [Beta Testers Needed](http://aihr.us/become-beta-tester/) - get the latest WordPress Starter Premium version
+1. [Contribute Code to Aihrus WordPress Starter Premium](https://github.com/michael-cannon/wordpress-starter/blob/master/CONTRIBUTING.md) - [request access](http://aihr.us/contact-aihrus/)
+1. [Beta Testers Needed](http://aihr.us/become-beta-tester/) - get the latest Aihrus WordPress Starter Premium version
 
 
 == Screenshots ==
@@ -156,7 +155,7 @@ See [CHANGELOG](http://aihr.us/wordpress-starter-premium/changelog/)
 
 == API ==
 
-* Read the [WordPress Starter Premium API](http://aihr.us/wordpress-starter-premium/api/).
+* Read the [Aihrus WordPress Starter Premium API](http://aihr.us/wordpress-starter-premium/api/).
 
 
 == Localization ==

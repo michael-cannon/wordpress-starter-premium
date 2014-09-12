@@ -1,16 +1,21 @@
 <?php
 /**
- * Copyright 2014 Michael Cannon (email: mc@aihr.us)
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License, version 2, as
- * published by the Free Software Foundation.
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+Aihrus WordPress Starter Premium
+Copyright (C) 2014  Michael Cannon
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along
+with this program; if not, write to the Free Software Foundation, Inc.,
+51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
 require_once AIHR_DIR_INC . 'class-aihrus-common.php';
@@ -59,16 +64,7 @@ class WordPress_Starter_Premium extends Aihrus_Common {
 
 		global $WPSP_Licensing;
 		if ( ! $WPSP_Licensing->valid_license() ) {
-			$need_license = true;
-			$license_key  = wps_get_option( $WPSP_Licensing->license_key() );
-			if ( $WPSP_Licensing->valid_hash( $license_key ) ) {
-				$success = wpsp_update_license( $license_key );
-				if ( $WPSP_Licensing->valid_hash( $success ) )
-					$need_license = false;
-			}
-
-			if ( $need_license )
-				self::set_notice( 'notice_license', DAY_IN_SECONDS );
+			self::set_notice( 'notice_license', DAY_IN_SECONDS );
 		}
 
 		add_filter( 'plugin_action_links', array( __CLASS__, 'plugin_action_links' ), 10, 2 );

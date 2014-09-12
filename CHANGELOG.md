@@ -1,4 +1,4 @@
-# CHANGELOG WordPress Starter Premium
+# CHANGELOG Aihrus WordPress Starter Premium
 
 ## master
 
@@ -14,6 +14,7 @@
 * Add WPS_PLUGIN_DIR path
 * Add [[gallery]]
 * Add `do_load` 
+* Aihrus WordPress Starter Premium branding
 * BUGFIX Inactive REQ_BASE due to old Aihrus Framework
 * Check for active base plugin
 * Check for PHP 5.3
@@ -30,6 +31,7 @@
 * Put YouTube to https
 * Readme installation
 * Remove unused CONSTANTS
+* Require Aihrus 1.1.4
 * RESOLVE Non-SSL protocol used for scripts and styles
 * Revise headers
 * Revise readme structure
@@ -41,6 +43,7 @@
 * Update Aihrus integration
 * Update copyright
 * Update EDD_SL_Plugin_Updater 1.1
+* Update LICENSE
 * Update `version_check` for free requirements
 * Use $plugin_assets than $plugin_path
 * Use aihr_check_aihrus_framework

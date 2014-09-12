@@ -1,19 +1,21 @@
 <?php
-/*
-	Copyright 2014 Michael Cannon (email: mc@aihr.us)
+/**
+Aihrus WordPress Starter Premium
+Copyright (C) 2014  Michael Cannon
 
-	This program is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License, version 2, as
-	published by the Free Software Foundation.
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
 
-	This program is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU General Public License for more details.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
 
-	You should have received a copy of the GNU General Public License
-	along with this program; if not, write to the Free Software
-	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+You should have received a copy of the GNU General Public License along
+with this program; if not, write to the Free Software Foundation, Inc.,
+51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
 require_once AIHR_DIR_INC . 'class-aihrus-licensing.php';
@@ -23,6 +25,9 @@ if ( class_exists( 'WordPress_Starter_Premium_Licensing' ) )
 
 
 class WordPress_Starter_Premium_Licensing extends Aihrus_Licensing{
+	public static $settings_id = WordPress_Starter_Settings::ID;
+
+
 	public function __construct() {
 		parent::__construct( WordPress_Starter_Premium::SLUG, WPSP_NAME );
 
@@ -52,16 +57,31 @@ class WordPress_Starter_Premium_Licensing extends Aihrus_Licensing{
 /**
  *
  *
+ */
+/**
+ *
+ *
+ * @SuppressWarnings(PHPMD.Superglobals)
  * @SuppressWarnings(PHPMD.LongVariable)
  */
 function wpsp_update_license( $license ) {
 	global $WPSP_Licensing;
 
-	$result = $WPSP_Licensing->update_license( $license );
-	if ( ! $WPSP_Licensing->valid_hash( $result ) )
-		WordPress_Starter_Premium::set_notice( 'notice_license' );
+	if ( ! empty( $_REQUEST['option_page'] ) && WordPress_Starter_Settings::ID == $_REQUEST['option_page'] ) {
+		$current_license = $WPSP_Licensing->get_license();
+		$valid_license   = $WPSP_Licensing->valid_license();
+		if ( ! $valid_license || $license != $current_license ) {
+			$result        = $WPSP_Licensing->update_license( $license );
+			$valid_license = $WPSP_Licensing->valid_license();
+			if ( ! $valid_license ) {
+				WordPress_Starter_Premium::set_notice( 'notice_license', HOUR_IN_SECONDS );
+			}
+		}
 
-	return $result;
+		return $result;
+	}
+
+	return $license;
 }
 
 
