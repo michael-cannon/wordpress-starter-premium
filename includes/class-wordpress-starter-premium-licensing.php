@@ -1,6 +1,6 @@
 <?php
 /**
-Aihrus WordPress Starter Premium
+WordPress Starter Premium
 Copyright (C) 2014  Michael Cannon
 
 This program is free software; you can redistribute it and/or modify
@@ -20,8 +20,9 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 
 require_once AIHR_DIR_INC . 'class-aihrus-licensing.php';
 
-if ( class_exists( 'WordPress_Starter_Premium_Licensing' ) )
+if ( class_exists( 'WordPress_Starter_Premium_Licensing' ) ) {
 	return;
+}
 
 
 class WordPress_Starter_Premium_Licensing extends Aihrus_Licensing{

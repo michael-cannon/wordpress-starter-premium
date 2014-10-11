@@ -1,4 +1,4 @@
-# CHANGELOG Aihrus WordPress Starter Premium
+# CHANGELOG WordPress Starter Premium
 
 ## master
 
@@ -14,7 +14,7 @@
 * Add WPS_PLUGIN_DIR path
 * Add [[gallery]]
 * Add `do_load` 
-* Aihrus WordPress Starter Premium branding
+* WordPress Starter Premium branding
 * BUGFIX Inactive REQ_BASE due to old Aihrus Framework
 * Check for active base plugin
 * Check for PHP 5.3

@@ -1,6 +1,6 @@
 <?php
 /**
-Aihrus WordPress Starter Premium
+WordPress Starter Premium
 Copyright (C) 2014  Michael Cannon
 
 This program is free software; you can redistribute it and/or modify
@@ -44,7 +44,7 @@ function wpsp_requirements_check( $force_check = false ) {
 	global $wps_activated;
 
 	if ( empty( $wps_activated ) ) {
-		$deactivate_reason = esc_html__( 'Internal Aihrus WordPress Starter not detected' );
+		$deactivate_reason = esc_html__( 'Internal WordPress Starter not detected' );
 	}
 
 	if ( ! empty( $deactivate_reason ) ) {
@@ -72,7 +72,7 @@ function wpsp_notice_aihrus() {
 
 
 function wpsp_notice_wps_deactivated() {
-	$text = sprintf( esc_html__( 'Plugin "%1$s" has been deactivated as it no longer required by "%2$s".' ), WPSP_REQ_NAME, WPSP_NAME );
+	$text = sprintf( esc_html__( 'Plugin "%1$s" has been deactivated as it is no longer required by "%2$s".' ), WPSP_REQ_NAME, WPSP_NAME );
 
 	aihr_notice_error( $text );
 }

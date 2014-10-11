@@ -1,6 +1,6 @@
 <?php
 /**
-Aihrus WordPress Starter Premium
+WordPress Starter Premium
 Copyright (C) 2014  Michael Cannon
 
 This program is free software; you can redistribute it and/or modify
@@ -21,8 +21,9 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 require_once AIHR_DIR_INC . 'class-aihrus-common.php';
 require_once WPSP_DIR_INC . 'class-wordpress-starter-premium-licensing.php';
 
-if ( class_exists( 'WordPress_Starter_Premium' ) )
+if ( class_exists( 'WordPress_Starter_Premium' ) ) {
 	return;
+}
 
 
 class WordPress_Starter_Premium extends Aihrus_Common {
@@ -32,12 +33,16 @@ class WordPress_Starter_Premium extends Aihrus_Common {
 	const VERSION = WPSP_VERSION;
 
 	public static $class = __CLASS__;
+	public static $library_assets;
 	public static $notice_key;
 	public static $plugin_assets;
 
 
 	public function __construct() {
 		parent::__construct();
+
+		self::$library_assets = plugins_url( '/includes/libraries/', dirname( __FILE__ ) );
+		self::$library_assets = self::strip_protocol( self::$library_assets );
 
 		self::$plugin_assets = plugins_url( '/assets/', dirname( __FILE__ ) );
 		self::$plugin_assets = self::strip_protocol( self::$plugin_assets );

@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Aihrus WordPress Starter Premium
+ * Plugin Name: WordPress Starter Premium
  * Plugin URI: http://aihr.us/products/wordpress-starter-premium/
  * Description: TBD
  * Version: 1.0.0
@@ -13,7 +13,7 @@
 
 
 /**
-Aihrus WordPress Starter Premium
+WordPress Starter Premium
 Copyright (C) 2014  Michael Cannon
 
 This program is free software; you can redistribute it and/or modify
@@ -39,9 +39,9 @@ define( 'WPSP_BASE', plugin_basename( __FILE__ ) );
 define( 'WPSP_DIR', plugin_dir_path( __FILE__ ) );
 define( 'WPSP_DIR_INC', WPSP_DIR . 'includes/' );
 define( 'WPSP_DIR_LIB', WPSP_DIR_INC . 'libraries/' );
-define( 'WPSP_NAME', 'Aihrus WordPress Starter Premium' );
+define( 'WPSP_NAME', 'WordPress Starter Premium' );
 define( 'WPSP_REQ_BASE', 'wordpress-starter/wordpress-starter.php' );
-define( 'WPSP_REQ_NAME', 'Aihrus WordPress Starter' );
+define( 'WPSP_REQ_NAME', 'WordPress Starter' );
 define( 'WPSP_VERSION', '1.0.0' );
 
 require_once WPSP_DIR_LIB . WPSP_REQ_BASE;
