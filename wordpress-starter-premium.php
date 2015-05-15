@@ -32,14 +32,16 @@ with this program; if not, write to the Free Software Foundation, Inc.,
  */
 
 // Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) )
+if ( ! defined( 'ABSPATH' ) ) {
 	exit;
+}
 
 define( 'WPSP_BASE', plugin_basename( __FILE__ ) );
 define( 'WPSP_DIR', plugin_dir_path( __FILE__ ) );
 define( 'WPSP_DIR_INC', WPSP_DIR . 'includes/' );
 define( 'WPSP_DIR_LIB', WPSP_DIR_INC . 'libraries/' );
 define( 'WPSP_NAME', 'WordPress Starter Premium' );
+define( 'WPSP_PRODUCT_ID', 'TBD' );
 define( 'WPSP_REQ_BASE', 'wordpress-starter/wordpress-starter.php' );
 define( 'WPSP_REQ_NAME', 'WordPress Starter' );
 define( 'WPSP_VERSION', '1.0.0' );
@@ -64,15 +66,18 @@ add_action( 'plugins_loaded', 'wordpress_starter_premium_init', 99 );
  * @SuppressWarnings(PHPMD.UnusedLocalVariable)
  */
 function wordpress_starter_premium_init() {
-	if ( ! is_admin() )
+	if ( ! is_admin() ) {
 		return;
+	}
 
 	global $WPSP_Licensing;
-	if ( is_null( $WPSP_Licensing ) )
+	if ( is_null( $WPSP_Licensing ) ) {
 		$WPSP_Licensing = new WordPress_Starter_Premium_Licensing();
+	}
 
-	if ( ! class_exists( 'EDD_SL_Plugin_Updater' ) )
+	if ( ! class_exists( 'EDD_SL_Plugin_Updater' ) ) {
 		require_once WPSP_DIR_LIB . 'EDD_SL_Plugin_Updater.php';
+	}
 
 	$WPSP_Updater = new EDD_SL_Plugin_Updater(
 		$WPSP_Licensing->store_url,
@@ -87,8 +92,9 @@ function wordpress_starter_premium_init() {
 
 	if ( WordPress_Starter_Premium::version_check() ) {
 		global $WordPress_Starter_Premium;
-		if ( is_null( $WordPress_Starter_Premium ) )
+		if ( is_null( $WordPress_Starter_Premium ) ) {
 			$WordPress_Starter_Premium = new WordPress_Starter_Premium();
+		}
 
 		do_action( 'wpsp_init' );
 	}

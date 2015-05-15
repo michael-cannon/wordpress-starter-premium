@@ -32,7 +32,7 @@ class WordPress_Starter_Premium_Licensing extends Aihrus_Licensing{
 	public function __construct() {
 		parent::__construct( WordPress_Starter_Premium::SLUG, WPSP_NAME );
 
-		add_filter( 'wps_settings', array( $this, 'settings' ), 5 );
+		add_filter( 'wps_settings', array( __CLASS__, 'settings' ), 5 );
 	}
 
 

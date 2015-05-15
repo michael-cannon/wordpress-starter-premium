@@ -106,6 +106,8 @@ class WordPress_Starter_Premium extends Aihrus_Common {
 	public static function activation() {
 		if ( ! current_user_can( 'activate_plugins' ) )
 			return;
+
+		wps_init_options();
 	}
 
 
@@ -202,8 +204,10 @@ class WordPress_Starter_Premium extends Aihrus_Common {
 		$required_name = WPSP_REQ_NAME;
 		$purchase_url  = 'http://aihr.us/products/wordpress-starter-premium-wordpress-plugin/';
 		$item_name     = WPSP_NAME;
+		$product_id    = WPSP_PRODUCT_ID;
+		$license       = wps_get_option( WordPress_Starter_Premium::SLUG . 'license_key' );
 
-		aihr_notice_license( $post_type, $settings_id, $required_name, $purchase_url, $item_name );
+		aihr_notice_license( $post_type, $settings_id, $required_name, $purchase_url, $item_name, $product_id, $license );
 	}
 }
 

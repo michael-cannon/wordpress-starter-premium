@@ -72,7 +72,7 @@ function wpsp_notice_aihrus() {
 
 
 function wpsp_notice_wps_deactivated() {
-	$text = sprintf( esc_html__( 'Plugin "%1$s" has been deactivated as it is no longer required by "%2$s".' ), WPSP_REQ_NAME, WPSP_NAME );
+	$text = sprintf( esc_html__( 'Plugin "%1$s" has been deactivated as it is no longer required by "%2$s". You can safely delete plugin "%1$s" given that "Remove Plugin Data on Deletion?" isn\'t checked on the Reset tab of Settings.' ), WPSP_REQ_NAME, WPSP_NAME );
 
 	aihr_notice_error( $text );
 }

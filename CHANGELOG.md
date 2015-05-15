@@ -14,7 +14,7 @@
 * Add WPS_PLUGIN_DIR path
 * Add [[gallery]]
 * Add `do_load` 
-* WordPress Starter Premium branding
+* Auto save options on activation and upgrades
 * BUGFIX Inactive REQ_BASE due to old Aihrus Framework
 * Check for active base plugin
 * Check for PHP 5.3
@@ -47,3 +47,4 @@
 * Update `version_check` for free requirements
 * Use $plugin_assets than $plugin_path
 * Use aihr_check_aihrus_framework
+* WordPress Starter Premium branding
