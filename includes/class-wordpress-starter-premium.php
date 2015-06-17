@@ -51,21 +51,21 @@ class WordPress_Starter_Premium extends Aihrus_Common {
 		add_action( 'init', array( __CLASS__, 'init' ) );
 		add_shortcode( 'wordpress_starter_premium_shortcode', array( __CLASS__, 'wordpress_starter_premium_shortcode' ) );
 
-		if ( ! WordPress_Starter::do_load() )
+		if ( ! WordPress_Starter::do_load() ) {
 			return;
+		}
 
 		add_action( 'admin_menu', array( __CLASS__, 'admin_menu' ) );
 	}
 
 
 	/**
-	 *
-	 *
 	 * @SuppressWarnings(PHPMD.LongVariable)
 	 */
 	public static function admin_init() {
-		if ( ! self::version_check() )
+		if ( ! self::version_check() ) {
 			return;
+		}
 
 		global $WPSP_Licensing;
 		if ( ! $WPSP_Licensing->valid_license() ) {
@@ -85,8 +85,9 @@ class WordPress_Starter_Premium extends Aihrus_Common {
 	public static function init() {
 		load_plugin_textdomain( self::ID, false, 'wordpress-starter-premium/languages' );
 
-		if ( ! WordPress_Starter::do_load() )
+		if ( ! WordPress_Starter::do_load() ) {
 			return;
+		}
 
 		self::load_options();
 
@@ -96,36 +97,38 @@ class WordPress_Starter_Premium extends Aihrus_Common {
 
 
 	public static function plugin_action_links( $links, $file ) {
-		if ( self::BASE == $file )
+		if ( self::BASE == $file ) {
 			array_unshift( $links, WordPress_Starter::$settings_link );
+		}
 
 		return $links;
 	}
 
 
 	public static function activation() {
-		if ( ! current_user_can( 'activate_plugins' ) )
+		if ( ! current_user_can( 'activate_plugins' ) ) {
 			return;
+		}
 
 		wps_init_options();
 	}
 
 
 	public static function deactivation() {
-		if ( ! current_user_can( 'activate_plugins' ) )
+		if ( ! current_user_can( 'activate_plugins' ) ) {
 			return;
+		}
 	}
 
 
 	/**
-	 *
-	 *
 	 * @SuppressWarnings(PHPMD.LongVariable)
 	 */
 	public static function uninstall() {
-		if ( ! current_user_can( 'activate_plugins' ) )
+		if ( ! current_user_can( 'activate_plugins' ) ) {
 			return;
-		
+		}
+
 		require_once WPSP_DIR_INC . 'class-wordpress-starter-premium-licensing.php';
 
 		$WPSP_Licensing = new WordPress_Starter_Premium_Licensing();
@@ -134,8 +137,6 @@ class WordPress_Starter_Premium extends Aihrus_Common {
 
 
 	/**
-	 *
-	 *
 	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
 	 */
 	public static function scripts( $atts ) {

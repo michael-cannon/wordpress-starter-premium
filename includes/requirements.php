@@ -28,7 +28,7 @@ function wpsp_requirements_check( $force_check = false ) {
 	}
 
 	$check_okay = get_transient( 'wpsp_requirements_check' );
-	if ( empty( $force_check ) && $check_okay !== false ) {
+	if ( empty( $force_check ) && false !== $check_okay ) {
 		return $check_okay;
 	}
 
@@ -50,7 +50,7 @@ function wpsp_requirements_check( $force_check = false ) {
 	if ( ! empty( $deactivate_reason ) ) {
 		aihr_deactivate_plugin( WPSP_BASE, WPSP_NAME, $deactivate_reason );
 	}
-	
+
 	$check_okay = empty( $deactivate_reason );
 	if ( $check_okay ) {
 		delete_transient( 'wpsp_requirements_check' );

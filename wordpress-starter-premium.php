@@ -60,8 +60,6 @@ add_action( 'plugins_loaded', 'wordpress_starter_premium_init', 99 );
 
 
 /**
- *
- *
  * @SuppressWarnings(PHPMD.LongVariable)
  * @SuppressWarnings(PHPMD.UnusedLocalVariable)
  */
