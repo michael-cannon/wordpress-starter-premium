@@ -39,7 +39,7 @@ class WordPress_Starter_Premium_Licensing extends Aihrus_Licensing{
 	public function settings( $settings ) {
 		$title = esc_html__( 'License Key for %1$s' );
 
-		$settings[ WordPress_Starter_Premium::SLUG . 'license_key' ] = array(
+		$settings[ WordPress_Starter_Premium::SLUG . 'license_key'] = array(
 			'section' => 'premium',
 			'title' => esc_html__( 'License Key' ),
 			'title' => sprintf( $title, WPSP_NAME ),

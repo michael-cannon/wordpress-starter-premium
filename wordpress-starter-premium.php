@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: WordPress Starter Premium
- * Plugin URI: http://aihr.us/products/wordpress-starter-premium/
+ * Plugin URI: http://store.axelerant.com/downloads/wordpress-starter-premium/
  * Description: TBD
  * Version: 1.0.0
  * Author: Michael Cannon

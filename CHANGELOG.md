@@ -41,6 +41,7 @@
 * Specify a “Text Domain” and “Domain Path”
 * Tested up to 3.9.0
 * Update Aihrus integration
+* Update Axelerant store branding
 * Update copyright
 * Update EDD_SL_Plugin_Updater 1.1
 * Update LICENSE

@@ -180,7 +180,7 @@ class WordPress_Starter_Premium extends Aihrus_Common {
 
 
 	public static function sections( $sections ) {
-		$sections[ 'premium' ] = esc_html__( 'Premium' );
+		$sections['premium'] = esc_html__( 'Premium' );
 
 		return $sections;
 	}
@@ -202,7 +202,7 @@ class WordPress_Starter_Premium extends Aihrus_Common {
 		$post_type     = null;
 		$settings_id   = WordPress_Starter_Settings::ID;
 		$required_name = WPSP_REQ_NAME;
-		$purchase_url  = 'http://aihr.us/products/wordpress-starter-premium-wordpress-plugin/';
+		$purchase_url  = 'https://store.axelerant.com/downloads/wordpress-starter-premium-wordpress-plugin/';
 		$item_name     = WPSP_NAME;
 		$product_id    = WPSP_PRODUCT_ID;
 		$license       = wps_get_option( WordPress_Starter_Premium::SLUG . 'license_key' );
