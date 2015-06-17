@@ -12,4 +12,4 @@ The [WordPress Starter Premium plugin](http://wordpress.org/plugins/wordpress-st
 
 ## Need More?
 
-Further examples and more can be found by reading and searching the [WordPress Starter Premium Knowledge Base](https://aihrus.zendesk.com/categories/20102742-WordPress-Starter-Plugin) and [source code](https://github.com/michael-cannon/wordpress-starter-premium).
+Further examples and more can be found by reading and searching the [WordPress Starter Premium Knowledge Base](https://nodedesk.zendesk.com/hc/en-us/sections/200861112) and [source code](https://github.com/michael-cannon/wordpress-starter).

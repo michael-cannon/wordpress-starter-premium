@@ -4,8 +4,8 @@
  * Plugin URI: http://store.axelerant.com/downloads/wordpress-starter-premium/
  * Description: TBD
  * Version: 1.0.0
- * Author: Michael Cannon
- * Author URI: http://aihr.us/resume/
+ * Author: Axelerant
+ * Author URI: https://axelerant.com
  * License: GPLv2 or later
  * Text Domain: wordpress-starter-premium
  * Domain Path: /languages
@@ -14,7 +14,7 @@
 
 /**
 WordPress Starter Premium
-Copyright (C) 2014  Michael Cannon
+Copyright (C) 2015 Axelerant
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
