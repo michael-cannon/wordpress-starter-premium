@@ -43,6 +43,7 @@ define( 'WPSP_DIR_LIB', WPSP_DIR_INC . 'libraries/' );
 define( 'WPSP_NAME', 'WordPress Starter Premium' );
 define( 'WPSP_PRODUCT_ID', 'TBD' );
 define( 'WPSP_REQ_BASE', 'wordpress-starter/wordpress-starter.php' );
+define( 'WPSP_REQ_CLASS', 'WordPress_Starter' );
 define( 'WPSP_REQ_NAME', 'WordPress Starter' );
 define( 'WPSP_VERSION', '1.0.0' );
 
